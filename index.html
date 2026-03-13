@@ -233,6 +233,35 @@
       font-style: italic;
     }
 
+    .start-list {
+      list-style: none;
+      margin-top: 1rem;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .start-list li {
+      background: white;
+      border: 1px solid var(--line-light);
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+    }
+
+    .start-list strong {
+      display: block;
+      color: var(--rust);
+      margin-bottom: 0.15rem;
+      font-weight: 500;
+    }
+
+    .start-list span {
+      font-family: 'Inconsolata', monospace;
+      color: var(--ink-soft);
+      font-size: 0.82rem;
+      line-height: 1.45;
+      letter-spacing: 0.02em;
+    }
+
     .quick-links {
       list-style: none;
       display: grid;
@@ -321,6 +350,20 @@
       gap: 1.2rem;
     }
 
+    .map-list {
+      list-style: none;
+      margin: 1rem 0 0 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .map-list li {
+      background: rgba(199,162,104,0.08);
+      border: 1px solid var(--line-light);
+      border-radius: 12px;
+      padding: 0.85rem 0.95rem;
+    }
+
     .archive-zone {
       background: #11141b;
       padding: 5.2rem 0 6rem;
@@ -401,6 +444,19 @@
     }
 
     footer span { color: var(--gold); }
+
+    .footer-meta {
+      margin-top: 1.2rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: none;
+      line-height: 1.9;
+      color: #a59b8d;
+    }
+
+    .footer-meta a {
+      color: #d5b784;
+    }
 
     @keyframes riseIn {
       from { opacity: 0; transform: translateY(16px); }
@@ -483,6 +539,51 @@
           </p>
           <p class="small-note">
             Nothing here is final. That is part of its honesty.
+          </p>
+        </div>
+
+        <div class="panel">
+          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">Start here</span>
+          <h2>Choose a doorway</h2>
+          <p>
+            If you are arriving for the first time, begin with one living path rather than the whole landscape.
+          </p>
+          <ul class="start-list">
+            <li>
+              <strong><a href="../Circles-in-Motion/">Circles in Motion</a></strong>
+              <span>Movement practice for breath, emotional regulation, rhythm, and return.</span>
+            </li>
+            <li>
+              <strong><a href="../DiscoveryMode/index.html">DiscoveryMode</a></strong>
+              <span>Pedagogy rooted in curiosity, agency, embodiment, and shared attention.</span>
+            </li>
+            <li>
+              <strong><a href="living-systems-ai-covenant.html">The Covenant</a></strong>
+              <span>The ethical ground beneath tools, systems, memory, and shared making.</span>
+            </li>
+            <li>
+              <strong><a href="#seed-archive">Seed Archive</a></strong>
+              <span>Fragments, prototypes, and living work that may still be finding their form.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="intro-grid" style="margin-top: 1.4rem;">
+        <div class="panel">
+          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">What the Forge is for</span>
+          <h2>A workshop, not a showroom</h2>
+          <p>
+            The Forge is less a front gate than a workbench. It exists to help living projects
+            stay coherent as they move between story, toolmaking, pedagogy, movement, and commons care.
+          </p>
+          <p>
+            Some visitors may come looking for a single tool. Others may be tracing the wider shape
+            of the Flower Road. Both are welcome here. The work does not need to be finished in order
+            to be useful.
+          </p>
+          <p class="small-note">
+            Take what helps. Leave the rest richer.
           </p>
         </div>
 
@@ -570,7 +671,7 @@
         </p>
 
         <ul>
-          <li><strong>Breath cycles</strong> from RageDance and other movement practices</li>
+          <li><strong>Breath cycles</strong> from Circles in Motion and related movement practices</li>
           <li><strong>Attention pulses</strong> from DiscoveryMode fieldwork and reflection</li>
           <li><strong>Story resonance</strong> from Flower Road projects and shared narratives</li>
           <li><strong>Communal ignition</strong> when students, neighbors, or readers light up</li>
@@ -587,16 +688,22 @@
         <div class="section-card">
           <h2>Working Sections</h2>
           <p>
-            The Forge may hold documents, blueprints, notes, protocols, story fragments,
-            seed practices, ethical companions, and design experiments.
+            The Forge holds practical tools, story-bearing documents, ethical companions,
+            movement practices, prototypes, and unfinished designs that still carry heat.
           </p>
           <p>
-            Some sections will stay close to craft and implementation. Others will remain
-            nearer to language, symbol, or myth. The task is not to force one mode over the
-            other, but to let each piece find the container it needs.
+            Some sections remain close to implementation. Others stay nearer to symbol,
+            language, or myth. The task is not to flatten these modes into one another,
+            but to let each piece find the container it needs.
           </p>
+          <ul>
+            <li><strong>Pedagogy</strong> — DiscoveryMode and learning structures</li>
+            <li><strong>Movement</strong> — Circles in Motion and embodied return practices</li>
+            <li><strong>Ethics</strong> — Covenants, protocols, and relational guardrails</li>
+            <li><strong>Prototypes</strong> — MythGear, commons tools, and field-ready experiments</li>
+          </ul>
           <p class="link-line">
-            <a href="#">Current sections will gather here →</a>
+            <a href="#seed-archive">Current sections gather below →</a>
           </p>
         </div>
 
@@ -611,8 +718,40 @@
             The Forge is not optimized for speed. It is optimized for continuity,
             coherence, and relational making.
           </p>
+          <p>
+            This is a workshop within the wider Flower Road commons. You do not have to
+            understand the whole ecosystem in order to begin.
+          </p>
           <p class="link-line">
-            <a href="#seed-archive">Walk into the seed archive →</a>
+            <a href="#map-of-the-forge">See the map of the Forge →</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="grid-2" id="map-of-the-forge">
+        <div class="section-card">
+          <h2>Map of the Forge</h2>
+          <p>
+            The Forge is one working layer within the Flower Road ecosystem — a place where
+            living projects are warmed, shaped, and made shareable.
+          </p>
+          <ul class="map-list">
+            <li><strong>Flower Road</strong> — the wider ecosystem of story, pedagogy, movement, and commons care</li>
+            <li><strong>The Forge</strong> — the workshop layer where active materials gather</li>
+            <li><strong>Seed Archive</strong> — living entries that may still be evolving</li>
+          </ul>
+        </div>
+
+        <div class="section-card">
+          <h2>Stewardship</h2>
+          <p>
+            This work is meant to remain usable, attributable, and alive. The Forge exists
+            not as a brand enclosure, but as a commons-facing workbench where projects can
+            be encountered in honest form.
+          </p>
+          <p>
+            Where possible, tools and texts should remain readable, portable, and grounded
+            enough to travel without losing their ethical thread.
           </p>
         </div>
       </div>
@@ -662,7 +801,13 @@
   <footer>
     <span>Flower Road Commons</span> &nbsp;·&nbsp; The Forge &nbsp;·&nbsp;
     Keep the fire warm enough for others to arrive
+
+    <div class="footer-meta">
+      Last updated: March 2026<br>
+      Steward: Jacobo Hernandez Durbin + collaborators<br>
+      License: <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a>
+    </div>
   </footer>
 
 </body>
-</html> 
+</html>
