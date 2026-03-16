@@ -385,6 +385,357 @@
 
   <script src="./desert-rain.js"></script>
 </body>
+</html>
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 28px 16px 48px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 920px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px 22px;
+      box-shadow: 0 18px 60px var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      max-width: 66ch;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 22px 0 28px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .control {
+      display: grid;
+      gap: 8px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .control label {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .control input[type="range"],
+    .control select {
+      width: 100%;
+    }
+
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .toggle input {
+      transform: translateY(1px);
+    }
+
+    .demo-surface {
+      position: relative;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(159, 208, 255, 0.06), transparent 32%),
+        linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .rain-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .drop {
+      position: absolute;
+      top: -12%;
+      width: 1px;
+      height: 44px;
+      opacity: 0.24;
+      background: linear-gradient(to bottom, rgba(159,208,255,0), rgba(159,208,255,0.85), rgba(159,208,255,0));
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.28;
+      }
+      to {
+        transform: translateY(132%);
+        opacity: 0;
+      }
+    }
+
+    .text-field {
+      position: relative;
+      z-index: 1;
+      padding: clamp(24px, 4vw, 38px);
+      font-size: clamp(1.2rem, 2.1vw, 1.78rem);
+      line-height: 2;
+      min-height: 420px;
+    }
+
+    .word {
+      display: inline-block;
+      position: relative;
+      opacity: 0.04;
+      filter: blur(8px);
+      transform: translateY(0.45rem) scale(0.99);
+      color: rgba(219, 231, 242, 0.26);
+      transition:
+        opacity 520ms ease,
+        filter 680ms ease,
+        transform 680ms ease,
+        color 680ms ease,
+        text-shadow 680ms ease;
+      will-change: opacity, filter, transform, color;
+    }
+
+    .word.near {
+      opacity: 0.34;
+      filter: blur(2.2px);
+      transform: translateY(0.12rem) scale(1);
+      color: rgba(219, 231, 242, 0.72);
+    }
+
+    .word.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+      color: rgba(240, 247, 255, 0.98);
+      text-shadow: 0 0 18px rgba(159, 208, 255, 0.12);
+    }
+
+    .word.fading {
+      opacity: 0.48;
+      filter: blur(1.2px);
+      transform: translateY(0) scale(1);
+      color: rgba(159, 208, 255, 0.88);
+    }
+
+    .word.locked {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0) scale(1);
+      color: rgba(240, 247, 255, 0.98);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid rgba(159, 208, 255, 0.38);
+      background: rgba(159, 208, 255, 0.1);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-family: Arial, Helvetica, sans-serif;
+      transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: rgba(159, 208, 255, 0.16);
+      border-color: rgba(159, 208, 255, 0.55);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .notes {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .word,
+      .drop,
+      button {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <div class="header">
+        <p class="eyebrow">Forge Development · Module: Desert Rain · Stage: Interaction evolution</p>
+        <h1>Desert Rain</h1>
+        <p class="intro">
+          Move near the text, touch the surface, scroll, or arrive by keyboard. Words gather,
+          brighten, and fall into reading. Adjust pace, clustering, and accessibility without changing file structure.
+        </p>
+      </div>
+
+      <div class="controls" aria-label="Interaction controls">
+        <div class="control">
+          <label for="cadence">Reading cadence</label>
+          <select id="cadence">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <label for="cluster">Rainfall clustering</label>
+          <input id="cluster" type="range" min="1" max="5" value="2" />
+        </div>
+
+        <div class="control">
+          <label for="proximity">Proximity sensitivity</label>
+          <input id="proximity" type="range" min="60" max="220" value="120" />
+        </div>
+
+        <div class="control">
+          <label class="toggle">
+            <input id="reducedMotionToggle" type="checkbox" />
+            Reduced motion mode
+          </label>
+          <label class="toggle">
+            <input id="highContrastToggle" type="checkbox" />
+            Higher contrast text
+          </label>
+        </div>
+      </div>
+
+      <div class="demo-surface" id="demoSurface" tabindex="0" aria-describedby="demoNotes">
+        <div class="rain-overlay" id="rainOverlay" aria-hidden="true"></div>
+
+        <div class="text-field" id="textField" aria-live="polite">
+          <span class="word">The</span>
+          <span class="word">desert</span>
+          <span class="word">does</span>
+          <span class="word">not</span>
+          <span class="word">speak</span>
+          <span class="word">all</span>
+          <span class="word">at</span>
+          <span class="word">once.</span>
+
+          <span class="word">It</span>
+          <span class="word">gathers</span>
+          <span class="word">along</span>
+          <span class="word">the</span>
+          <span class="word">edges</span>
+          <span class="word">of</span>
+          <span class="word">attention,</span>
+
+          <span class="word">then</span>
+          <span class="word">loosens</span>
+          <span class="word">into</span>
+          <span class="word">clusters,</span>
+          <span class="word">touch,</span>
+          <span class="word">cadence,</span>
+          <span class="word">and</span>
+          <span class="word">breath.</span>
+
+          <span class="word">A</span>
+          <span class="word">reader</span>
+          <span class="word">does</span>
+          <span class="word">not</span>
+          <span class="word">force</span>
+          <span class="word">the</span>
+          <span class="word">rain.</span>
+
+          <span class="word">The</span>
+          <span class="word">rain</span>
+          <span class="word">arrives</span>
+          <span class="word">through</span>
+          <span class="word">nearness.</span>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="resetBtn" type="button">Reset rain</button>
+        <button id="replayBtn" type="button">Replay sequence</button>
+      </div>
+
+      <p class="notes" id="demoNotes">
+        Pointer movement and touch create local emergence. Scroll and keyboard arrival begin the main sequence.
+        Reduced motion reveals words more directly and softens the rainfall effect.
+      </p>
+
+      <p class="sr-only" id="statusText" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script src="./desert-rain.js"></script>
+</body>
 </html>      padding: 40px 20px 60px;
     }
 
