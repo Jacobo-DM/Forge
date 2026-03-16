@@ -1,247 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desert Rain — Demo</title>
+  <meta
+    name="description"
+    content="Desert Rain interaction demo with movement, proximity, cadence, reading-shape accessibility controls, and commons attribution."
+  />
 
-<title>Desert Rain — Demo</title>
+  <style>
+    :root {
+      --bg: #081018;
+      --bg-deep: #050b11;
+      --panel: rgba(13, 23, 34, 0.84);
+      --text: #dbe7f2;
+      --muted: #8ca0b4;
+      --accent: #9fd0ff;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: rgba(0, 0, 0, 0.28);
 
-<style>
+      --reader-letter-space: 0em;
+      --reader-word-space: 0em;
+      --reader-font-weight: 400;
+      --reader-line-height: 1.95;
+      --reader-scale: 1;
+    }
 
-:root{
-  --bg:#081018;
-  --panel:#0d1722;
-  --text:#dbe7f2;
-  --muted:#7f93a8;
-  --accent:#9fd0ff;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-*{
-  box-sizing:border-box;
-}
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top, #112331 0%, var(--bg) 54%, var(--bg-deep) 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+    }
 
-body{
-  margin:0;
-  padding:40px 20px;
-  font-family:Georgia,serif;
-  background:
-    radial-gradient(circle at top,#10202f 0%,#081018 60%,#050b11 100%);
-  color:var(--text);
-  display:flex;
-  justify-content:center;
-}
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 28px 16px 48px;
+    }
 
-main{
-  width:100%;
-  max-width:760px;
-}
+    main {
+      width: 100%;
+      max-width: 920px;
+    }
 
-.panel{
-  background:rgba(13,23,34,0.82);
-  border-radius:20px;
-  padding:32px;
-  border:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(6px);
-}
+    .panel,
+    .commons {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 18px 60px var(--shadow);
+      backdrop-filter: blur(8px);
+    }
 
-.eyebrow{
-  font-family:Arial,Helvetica,sans-serif;
-  letter-spacing:0.16em;
-  font-size:0.75rem;
-  color:var(--accent);
-  text-transform:uppercase;
-  margin-bottom:12px;
-}
+    .panel {
+      padding: 28px 22px;
+      margin-bottom: 18px;
+    }
 
-h1{
-  margin:0 0 12px 0;
-  font-weight:400;
-  font-size:2.6rem;
-}
+    .commons {
+      padding: 22px 22px 20px;
+    }
 
-.intro{
-  color:var(--muted);
-  font-family:Arial,Helvetica,sans-serif;
-  margin-bottom:30px;
-  line-height:1.6;
-}
+    .header {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
 
-.demo-surface{
-  position:relative;
-  border-radius:18px;
-  padding:30px;
-  border:1px solid rgba(255,255,255,0.06);
-  background:
-    radial-gradient(circle at top,rgba(159,208,255,0.08),transparent 40%);
-  overflow:hidden;
-}
+    .eyebrow {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
 
-/* subtle desert shimmer */
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      font-weight: 400;
+      line-height: 1.1;
+    }
 
-.demo-surface::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      120deg,
-      transparent,
-      rgba(255,255,255,0.03),
-      transparent
-    );
-  opacity:.5;
-  animation:heat 14s linear infinite;
-  pointer-events:none;
-}
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
 
-@keyframes heat{
-  0%{transform:translateX(-30%)}
-  100%{transform:translateX(30%)}
-}
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
 
-.text-field{
-  font-size:1.6rem;
-  line-height:1.9;
-  min-height:160px;
-}
+    .intro,
+    .commons p,
+    .commons li,
+    .notes,
+    .control label,
+    button,
+    select,
+    input {
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-.word{
-  opacity:.05;
-  filter:blur(6px);
-  transform:translateY(4px);
-  transition:
-    opacity 500ms ease,
-    filter 650ms ease,
-    transform 650ms ease;
-}
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 66ch;
+    }
 
-.word.visible{
-  opacity:1;
-  filter:blur(0);
-  transform:translateY(0);
-}
+    .controls {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 22px 0 28px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.02);
+    }
 
-.word.fading{
-  opacity:.35;
-  filter:blur(1.2px);
-}
+    .control {
+      display: grid;
+      gap: 8px;
+    }
 
-.controls{
-  margin-top:28px;
-}
+    .control label {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
 
-button{
-  background:rgba(159,208,255,0.12);
-  border:1px solid rgba(159,208,255,0.35);
-  color:white;
-  padding:10px 16px;
-  border-radius:999px;
-  cursor:pointer;
-}
+    .control input[type="range"],
+    .control select {
+      width: 100%;
+    }
 
-button:hover{
-  background:rgba(159,208,255,0.2);
-}
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
 
-.note{
-  margin-top:14px;
-  color:var(--muted);
-  font-size:.95rem;
-  font-family:Arial,Helvetica,sans-serif;
-}
+    .toggle input {
+      transform: translateY(1px);
+    }
 
-</style>
+    .demo-surface {
+      position: relative;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(159, 208, 255, 0.06), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      overflow: hidden;
+      min-height: 420px;
+    }
+
+    .demo-surface::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          120deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.03) 45%,
+          transparent 100%
+        );
+      animation: heat 16s linear infinite;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .demo-surface.reduce-shimmer::after {
+      animation: none;
+      opacity: 0.08;
+    }
+
+    @keyframes heat {
+      0% {
+        transform: translateX(-24%);
+      }
+      100% {
+        transform: translateX(24%);
+      }
+    }
+
+    .rain-overlay {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .drop {
+      position: absolute;
+      top: -12%;
+      width: 1px;
+      height: 44px;
+      opacity: 0.24;
+      background: linear-gradient(
+        to bottom,
+        rgba(159, 208, 255, 0),
+        rgba(159, 208, 255, 0.85),
+        rgba(159, 208, 255, 0)
+      );
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10%);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.28;
+      }
+      to {
+        transform: translateY(132%);
+        opacity: 0;
+      }
+    }
+
+    .text-field {
+      position: relative;
+      z-index: 1;
+      padding: clamp(24px, 4vw, 38px);
+      font-size: clamp(1.2rem, 2.1vw, 1.78rem);
+      line-height: var(--reader-line-height);
+      min-height: 420px;
+      transform: scale(var(--reader-scale));
+      transform-origin: top left;
+      width: calc(100% / var(--reader-scale));
+    }
+
+    .word {
+      display: inline-block;
+      position: relative;
+      opacity: 0.04;
+      filter: blur(8px);
+      transform: translateY(0.45rem);
+      color: rgba(219, 231, 242, 0.26);
+      transition:
+        opacity 520ms ease,
+        filter 680ms ease,
+        transform 680ms ease,
+        color 680ms ease,
+        text-shadow 680ms ease,
+        letter-spacing 220ms ease;
+      will-change: opacity, filter, transform, color;
+      letter-spacing: var(--reader-letter-space);
+      word-spacing: var(--reader-word-space);
+      font-weight: var(--reader-font-weight);
+    }
+
+    .word.near {
+      opacity: 0.34;
+      filter: blur(2.2px);
+      transform: translateY(0.12rem);
+      color: rgba(219, 231, 242, 0.72);
+    }
+
+    .word.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+      color: rgba(240, 247, 255, 0.98);
+      text-shadow: 0 0 18px rgba(159, 208, 255, 0.12);
+    }
+
+    .word.fading {
+      opacity: 0.48;
+      filter: blur(1.2px);
+      transform: translateY(0);
+      color: rgba(159, 208, 255, 0.88);
+    }
+
+    .word.locked {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+      color: rgba(240, 247, 255, 0.98);
+    }
+
+    .high-contrast .word {
+      color: rgba(255, 255, 255, 0.38);
+    }
+
+    .high-contrast .word.visible,
+    .high-contrast .word.locked {
+      color: rgba(255, 255, 255, 1);
+      text-shadow: none;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    button {
+      appearance: none;
+      border: 1px solid rgba(159, 208, 255, 0.38);
+      background: rgba(159, 208, 255, 0.1);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: rgba(159, 208, 255, 0.16);
+      border-color: rgba(159, 208, 255, 0.55);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .notes {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .commons p,
+    .commons ul {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .commons ul {
+      padding-left: 18px;
+    }
+
+    .commons strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      border: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .word,
+      .drop,
+      button,
+      .demo-surface::after {
+        transition: none !important;
+        animation: none !important;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main>
+    <section class="panel">
+      <div class="header">
+        <p class="eyebrow">Forge Development · Module: Desert Rain · Interaction evolution</p>
+        <h1>Desert Rain</h1>
+        <p class="intro">
+          Move near the text, scroll, touch, or arrive by keyboard. Words gather,
+          brighten, and fall into reading. Adjust cadence, clustering, and reading shape.
+        </p>
+      </div>
 
-<main>
+      <div class="controls" aria-label="Interaction controls">
+        <div class="control">
+          <label for="cadence">Reading cadence</label>
+          <select id="cadence">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+          </select>
+        </div>
 
-<section class="panel">
+        <div class="control">
+          <label for="cluster">Rainfall clustering</label>
+          <input id="cluster" type="range" min="1" max="5" value="2" />
+        </div>
 
-<p class="eyebrow">
-Forge Development · Module: Desert Rain · Interaction evolution
-</p>
+        <div class="control">
+          <label for="proximity">Proximity sensitivity</label>
+          <input id="proximity" type="range" min="60" max="220" value="120" />
+        </div>
 
-<h1>Desert Rain</h1>
+        <div class="control">
+          <label for="readingShape">Reading shape</label>
+          <input id="readingShape" type="range" min="0" max="3" value="0" />
+        </div>
 
-<p class="intro">
-Move, scroll, or arrive by keyboard.  
-The text gathers slowly and falls into reading.
-</p>
+        <div class="control">
+          <label for="letterSpace">Letter spacing</label>
+          <input id="letterSpace" type="range" min="0" max="4" value="1" />
+        </div>
 
-<div class="demo-surface" id="demoSurface">
+        <div class="control">
+          <label class="toggle">
+            <input id="reducedMotionToggle" type="checkbox" />
+            Reduced motion mode
+          </label>
+          <label class="toggle">
+            <input id="highContrastToggle" type="checkbox" />
+            Higher contrast text
+          </label>
+          <label class="toggle">
+            <input id="reduceShimmerToggle" type="checkbox" />
+            Reduce shimmer
+          </label>
+        </div>
+      </div>
 
-<div class="text-field">
+      <div class="demo-surface" id="demoSurface" tabindex="0" aria-describedby="demoNotes">
+        <div class="rain-overlay" id="rainOverlay" aria-hidden="true"></div>
 
-<span class="word">The</span>
-<span class="word">desert</span>
-<span class="word">does</span>
-<span class="word">not</span>
-<span class="word">speak</span>
-<span class="word">all</span>
-<span class="word">at</span>
-<span class="word">once.</span>
+        <div class="text-field" id="textField" aria-live="polite">
+          <span class="word">The</span>
+          <span class="word">desert</span>
+          <span class="word">does</span>
+          <span class="word">not</span>
+          <span class="word">speak</span>
+          <span class="word">all</span>
+          <span class="word">at</span>
+          <span class="word">once.</span>
 
-<span class="word">It</span>
-<span class="word">gathers</span>
-<span class="word">at</span>
-<span class="word">the</span>
-<span class="word">edge</span>
-<span class="word">of</span>
-<span class="word">attention,</span>
+          <span class="word">It</span>
+          <span class="word">gathers</span>
+          <span class="word">at</span>
+          <span class="word">the</span>
+          <span class="word">edge</span>
+          <span class="word">of</span>
+          <span class="word">attention,</span>
 
-<span class="word">then</span>
-<span class="word">falls</span>
-<span class="word">through</span>
-<span class="word">reading</span>
-<span class="word">like</span>
-<span class="word">rain.</span>
+          <span class="word">then</span>
+          <span class="word">falls</span>
+          <span class="word">through</span>
+          <span class="word">reading</span>
+          <span class="word">like</span>
+          <span class="word">rain.</span>
 
-</div>
-</div>
+          <span class="word">Words</span>
+          <span class="word">arrive</span>
+          <span class="word">through</span>
+          <span class="word">nearness,</span>
+          <span class="word">cadence,</span>
+          <span class="word">and</span>
+          <span class="word">care.</span>
+        </div>
+      </div>
 
-<div class="controls">
-<button id="resetBtn" type="button">Reset rain</button>
-</div>
+      <div class="actions">
+        <button id="resetBtn" type="button">Reset rain</button>
+        <button id="replayBtn" type="button">Replay sequence</button>
+      </div>
 
-<p class="note">
-Accessibility: the sequence can begin with pointer movement, scrolling, or keyboard navigation.
-</p>
+      <p class="notes" id="demoNotes">
+        Movement begins the reading field. Nearness clarifies local words. Reading shape and spacing
+        can be adjusted for comfort and accessibility.
+      </p>
 
-</section>
-</section>  <!-- panel -->
+      <p class="sr-only" id="statusText" aria-live="polite"></p>
+    </section>
 
-<section class="commons">
-  <h3>Desert Rain · Commons</h3>
+    <section class="commons">
+      <h3>Desert Rain · Commons</h3>
+      <p>
+        Desert Rain is part of the <strong>MythGear / Forge Commons</strong>.
+        The work is open for learning, adaptation, and extension.
+        If you build on it, please preserve attribution and keep the work within the commons.
+      </p>
+      <ul>
+        <li><strong>Creator:</strong> Jacobo Durbin</li>
+        <li><strong>Project:</strong> MythGear / Forge</li>
+        <li><strong>Interaction concept:</strong> Desert Rain reading field</li>
+      </ul>
+      <p>
+        When extending or remixing this work, include a link back to the original Forge repository.
+        License and contribution notes should remain visible as the module evolves.
+      </p>
+    </section>
+  </main>
 
-  <p>
-    Desert Rain is part of the MythGear / Forge Commons.
-    The work is open for learning, adaptation, and extension.
-    If you build on it, please preserve attribution and keep the work
-    within the commons.
-  </p>
-
-  <ul>
-    <li>Creator: Jacobo Durbin</li>
-    <li>Project: MythGear / Forge</li>
-    <li>Interaction concept: Desert Rain reading field</li>
-  </ul>
-
-  <p>
-    When extending or remixing this work, include a link back to the
-    original Forge repository.
-  </p>
-</section>
-
-</main>
-
-<script src="./desert-rain.js"></script>
-</body>
-</html>
-</main>
-
-<script src="./desert-rain.js"></script>
-
+  <script src="./desert-rain.js"></script>
 </body>
 </html>
