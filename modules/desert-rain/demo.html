@@ -1,76 +1,193 @@
-const words = Array.from(document.querySelectorAll(".word"));
-const resetBtn = document.getElementById("resetBtn");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Desert Rain — Demo</title>
+  <meta
+    name="description"
+    content="Desert Rain interaction demo: text emerges gently through movement, scroll, or keyboard arrival."
+  />
+  <style>
+    :root {
+      --bg: #081018;
+      --panel: #0d1722;
+      --text: #dbe7f2;
+      --muted: #7f93a8;
+      --accent: #9fd0ff;
+      --border: rgba(255, 255, 255, 0.08);
+    }
 
-let revealIndex = 0;
-let revealTimeout = null;
-let hasStarted = false;
+    * {
+      box-sizing: border-box;
+    }
 
-function clearRevealTimer() {
-  if (revealTimeout) {
-    clearTimeout(revealTimeout);
-    revealTimeout = null;
-  }
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #10202f 0%, #081018 55%, #050b11 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      min-height: 100%;
+    }
 
-function setWordState(index, state) {
-  const word = words[index];
-  if (!word) return;
+    body {
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px 60px;
+    }
 
-  word.classList.remove("visible", "fading");
-  if (state) word.classList.add(state);
-}
+    main {
+      width: 100%;
+      max-width: 780px;
+    }
 
-function resetWords() {
-  clearRevealTimer();
-  revealIndex = 0;
-  hasStarted = false;
+    .panel {
+      background: rgba(13, 23, 34, 0.82);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(6px);
+    }
 
-  words.forEach((word) => {
-    word.classList.remove("visible", "fading");
-  });
-}
+    .eyebrow {
+      margin: 0 0 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
 
-function revealNextWord() {
-  if (revealIndex >= words.length) {
-    clearRevealTimer();
-    return;
-  }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.1;
+    }
 
-  if (revealIndex > 0) {
-    setWordState(revealIndex - 1, "fading");
-  }
+    .intro {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      max-width: 62ch;
+    }
 
-  setWordState(revealIndex, "visible");
-  revealIndex += 1;
+    .text-field {
+      font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+      line-height: 1.95;
+      min-height: 10rem;
+    }
 
-  const nextDelay = 90 + Math.random() * 120;
-  revealTimeout = window.setTimeout(revealNextWord, nextDelay);
-}
+    .word {
+      opacity: 0.06;
+      filter: blur(7px);
+      transform: translateY(0.35rem);
+      transition:
+        opacity 500ms ease,
+        filter 650ms ease,
+        transform 650ms ease,
+        color 650ms ease;
+      color: rgba(219, 231, 242, 0.32);
+    }
 
-function beginRain() {
-  if (hasStarted) return;
-  hasStarted = true;
+    .word.visible {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+      color: rgba(219, 231, 242, 0.98);
+    }
 
-  revealTimeout = window.setTimeout(revealNextWord, 240);
-}
+    .word.fading {
+      opacity: 0.34;
+      filter: blur(1.6px);
+      transform: translateY(0);
+      color: rgba(159, 208, 255, 0.82);
+    }
 
-function handleGentleArrival() {
-  beginRain();
-}
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
 
-function handleKeyArrival(event) {
-  const allowedKeys = ["Tab", "ArrowDown", "ArrowUp", "ArrowRight", "ArrowLeft", " "];
-  if (allowedKeys.includes(event.key)) {
-    beginRain();
-  }
-}
+    button {
+      appearance: none;
+      border: 1px solid rgba(159, 208, 255, 0.35);
+      background: rgba(159, 208, 255, 0.1);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: inherit;
+      font-family: Arial, Helvetica, sans-serif;
+      transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+    }
 
-window.addEventListener("pointermove", handleGentleArrival, { once: true });
-window.addEventListener("scroll", handleGentleArrival, { once: true });
-window.addEventListener("keydown", handleKeyArrival, { once: true });
+    button:hover {
+      background: rgba(159, 208, 255, 0.16);
+      border-color: rgba(159, 208, 255, 0.5);
+      transform: translateY(-1px);
+    }
 
-resetBtn.addEventListener("click", () => {
-  resetWords();
-});
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="panel">
+      <p class="eyebrow">Forge Development</p>
+      <h1>Desert Rain</h1>
+      <p class="intro">
+        Move, scroll, or arrive by keyboard. The text will emerge in a gentle sequence.
+        Use reset to begin again.
+      </p>
 
-resetWords();
+      <div class="text-field" aria-live="polite">
+        <span class="word">The</span>
+        <span class="word">desert</span>
+        <span class="word">does</span>
+        <span class="word">not</span>
+        <span class="word">speak</span>
+        <span class="word">all</span>
+        <span class="word">at</span>
+        <span class="word">once.</span>
+
+        <span class="word">It</span>
+        <span class="word">gathers</span>
+        <span class="word">at</span>
+        <span class="word">the</span>
+        <span class="word">edge</span>
+        <span class="word">of</span>
+        <span class="word">attention,</span>
+
+        <span class="word">then</span>
+        <span class="word">falls</span>
+        <span class="word">through</span>
+        <span class="word">reading</span>
+        <span class="word">like</span>
+        <span class="word">rain.</span>
+      </div>
+
+      <div class="controls">
+        <button id="resetBtn" type="button">Reset rain</button>
+      </div>
+
+      <p class="note">
+        Accessibility note: the sequence can begin with pointer movement, scrolling, or keyboard navigation.
+      </p>
+    </section>
+  </main>
+
+  <script src="./desert-rain.js"></script>
+</body>
+</html>
