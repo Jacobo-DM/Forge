@@ -1,1 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>Desert Rain — Forge Module</title>
+
+<style>
+
+:root{
+--bg:#0b0f1c;
+--panel:#12182f;
+--line:rgba(190,210,255,0.15);
+--text:#e7edff;
+--muted:#b7c3e6;
+--accent:#9dd0ff;
+--radius:16px;
+--max:760px;
+}
+
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+background:linear-gradient(180deg,#080d18,#0b0f1c);
+color:var(--text);
+line-height:1.6;
+}
+
+.wrap{
+width:min(100% - 2rem,var(--max));
+margin:0 auto;
+padding:3rem 0 4rem;
+}
+
+h1{
+margin:0;
+font-size:clamp(2.4rem,5vw,3.8rem);
+}
+
+.intro{
+margin-top:1rem;
+color:var(--muted);
+}
+
+.panel{
+margin-top:2rem;
+padding:1.4rem;
+border:1px solid var(--line);
+border-radius:var(--radius);
+background:var(--panel);
+}
+
+.panel h2{
+margin-top:0;
+}
+
+.actions{
+margin-top:1rem;
+display:flex;
+flex-wrap:wrap;
+gap:.6rem;
+}
+
+.button{
+display:inline-block;
+padding:.7rem 1rem;
+border-radius:999px;
+border:1px solid var(--line);
+background:rgba(157,208,255,.1);
+color:var(--accent);
+text-decoration:none;
+font-weight:600;
+}
+
+.button.secondary{
+background:rgba(255,255,255,.04);
+color:var(--text);
+}
+
+.map{
+margin-top:1rem;
+font-family:monospace;
+font-size:.9rem;
+color:var(--muted);
+background:rgba(255,255,255,.03);
+padding:.8rem;
+border-radius:10px;
+}
+
+.footer{
+margin-top:3rem;
+font-size:.9rem;
+color:#93a4d0;
+}
+
+a{color:var(--accent);}
+
+</style>
+</head>
+
+<body>
+
+<main class="wrap">
+
+<header>
+<h1>Desert Rain</h1>
+
+<p class="intro">
+A quiet reading practice within the Forge.
+</p>
+
+<p class="intro">
+Desert Rain explores whether digital text can return to a slower rhythm —
+one where attention arrives before language does.
+</p>
+</header>
+
+<section class="panel">
+
+<h2>Enter the module</h2>
+
+<p>
+There are three ways to approach Desert Rain.
+</p>
+
+<div class="actions">
+
+<a class="button" href="demo.html">
+Enter the demo
+</a>
+
+<a class="button secondary" href="README.md">
+Read the seed
+</a>
+
+<a class="button secondary" href="COVENANT.md">
+Read the covenant
+</a>
+
+</div>
+
+</section>
+
+<section class="panel">
+
+<h2>Module structure</h2>
+
+<div class="map">
+
+modules/desert-rain/<br>
+&nbsp;&nbsp;README.md — seed text<br>
+&nbsp;&nbsp;COVENANT.md — preserve the pause<br>
+&nbsp;&nbsp;demo.html — reading prototype<br>
+&nbsp;&nbsp;desert-rain.css — visual atmosphere<br>
+&nbsp;&nbsp;desert-rain.js — interaction logic
+
+</div>
+
+</section>
+
+<section class="panel">
+
+<h2>Return to the Forge</h2>
+
+<p>
+The Forge contains small seed experiments that may later grow into larger systems.
+</p>
+
+<p>
+<a href="../../index.html">Return to Forge</a>
+</p>
+
+</section>
+
+<footer class="footer">
+
+The pause is the point.
+
+</footer>
+
+</main>
+
+</body>
+</html>
