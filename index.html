@@ -3,862 +3,347 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Forge | Flower Road Commons</title>
-  <meta name="description" content="The Forge is a living archive of tools, practices, stories, prototypes, and commons-facing experiments within the Flower Road." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Inconsolata:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>The Forge</title>
+  <meta
+    name="description"
+    content="The Forge is a living archive within the Flower Road commons: tools, practices, story fragments, ethical ground layers, and prototypes that are still becoming."
+  />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --night: #0a0c10;
-      --char: #11141b;
-      --ember: #171b24;
-      --paper: #f7f1e8;
-      --paper-2: #fcf8f2;
-      --ink: #221d17;
-      --ink-soft: #5e5448;
-      --gold: #c7a268;
-      --gold-soft: rgba(199,162,104,0.14);
-      --moss: #56745c;
-      --rust: #9b5d2f;
-      --line-dark: rgba(255,255,255,0.07);
-      --line-light: rgba(92,74,53,0.14);
-      --glow: 0 18px 50px rgba(0,0,0,0.18);
-      --radius: 16px;
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --panel: #151d3a;
+      --panel-2: #0f1730;
+      --line: rgba(190, 210, 255, 0.14);
+      --text: #e8eefc;
+      --muted: #b7c3e6;
+      --soft: #8ea0cf;
+      --accent: #9dd0ff;
+      --accent-2: #d8e9ff;
+      --shadow: rgba(0, 0, 0, 0.28);
       --max: 1080px;
+      --radius: 18px;
     }
 
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      background: var(--night);
-      color: #e8e2d7;
-      font-family: 'Lora', Georgia, serif;
-      line-height: 1.75;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.02;
-      pointer-events: none;
-      z-index: 9999;
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(157, 208, 255, 0.08), transparent 28%),
+        linear-gradient(180deg, #09101d 0%, #0b1020 100%);
+      line-height: 1.65;
     }
 
     a {
-      color: var(--gold);
+      color: var(--accent);
       text-decoration: none;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: var(--accent-2);
     }
 
     .wrap {
-      width: min(var(--max), calc(100% - 2.4rem));
+      width: min(100% - 2rem, var(--max));
       margin: 0 auto;
-    }
-
-    .mono {
-      font-family: 'Inconsolata', monospace;
-      letter-spacing: 0.08em;
-    }
-
-    .eyebrow {
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: block;
     }
 
     .hero {
-      min-height: 92vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 5rem 0 6rem;
-      background:
-        radial-gradient(circle at 50% 28%, rgba(199,162,104,0.10) 0%, transparent 34%),
-        linear-gradient(to bottom, #0a0c10 0%, #0d1117 100%);
-      position: relative;
+      padding: 5rem 0 2rem;
     }
 
-    .hero-inner {
-      max-width: 50rem;
-      animation: riseIn 1.2s ease forwards;
-    }
-
-    .wordmark {
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.42em;
+    .eyebrow {
+      margin: 0 0 0.75rem;
+      color: var(--soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 2.4rem;
-      opacity: 0.9;
-    }
-
-    h1, h2, h3 {
-      font-weight: 500;
-      line-height: 1.2;
     }
 
     h1 {
-      font-size: clamp(2.4rem, 5.4vw, 4.4rem);
-      color: #f5efe5;
-      margin-bottom: 1rem;
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
     }
 
-    .hero-sub {
-      font-size: clamp(1.1rem, 2.1vw, 1.34rem);
-      font-style: italic;
-      color: #d8d1c5;
-      max-width: 40rem;
-      margin: 0 auto 1.4rem;
+    .lead {
+      max-width: 48rem;
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
-    .hero-text {
-      max-width: 38rem;
-      margin: 0 auto;
-      color: #b9b1a4;
-      font-size: 1rem;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 1.25rem;
+      margin-top: 2rem;
     }
 
-    .hero-actions {
-      margin-top: 2.2rem;
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 18px 40px var(--shadow);
+    }
+
+    .card-pad {
+      padding: 1.35rem;
+    }
+
+    .card h2,
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      line-height: 1.15;
+    }
+
+    .card p {
+      margin: 0.75rem 0;
+      color: var(--muted);
+    }
+
+    .link-list,
+    .plain-list {
+      margin: 1rem 0 0;
+      padding-left: 1.2rem;
+    }
+
+    .link-list li,
+    .plain-list li {
+      margin: 0.55rem 0;
+      color: var(--muted);
+    }
+
+    .button-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.8rem;
-      justify-content: center;
-    }
-
-    .button,
-    .button-ghost {
-      display: inline-block;
-      border-radius: 999px;
-      padding: 0.72rem 1.1rem;
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      margin-top: 1.1rem;
     }
 
     .button {
-      background: var(--gold);
-      color: #231c14;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.16);
-    }
-
-    .button-ghost {
-      border: 1px solid rgba(255,255,255,0.10);
-      color: #d8d1c5;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .button:hover,
-    .button-ghost:hover {
-      transform: translateY(-1px);
-      text-decoration: none;
-    }
-
-    .scroll-hint {
-      position: absolute;
-      bottom: 2.2rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
+      display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      color: #7f7a70;
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
+      gap: 0.45rem;
+      padding: 0.82rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(157, 208, 255, 0.08);
+      color: var(--accent-2);
+      font-weight: 600;
+      transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
     }
 
-    .scroll-line {
-      width: 1px;
-      height: 40px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.28), transparent);
-      animation: breathe 2.6s ease-in-out infinite;
+    .button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(216, 233, 255, 0.28);
+      background: rgba(157, 208, 255, 0.14);
     }
 
-    .intro {
-      background: var(--paper);
-      color: var(--ink);
-      padding: 5.5rem 0 4.5rem;
-      border-top: 1px solid var(--line-dark);
+    .button.secondary {
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
     }
 
-    .intro-grid {
+    section {
+      padding: 1rem 0 0;
+    }
+
+    .section-head {
+      margin: 0 0 1rem;
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+    }
+
+    .modules-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 1.4rem;
-      align-items: stretch;
+      grid-template-columns: 1.2fr 0.9fr;
+      gap: 1.25rem;
     }
 
-    .panel {
-      background: var(--paper-2);
-      border: 1px solid var(--line-light);
-      border-radius: var(--radius);
-      padding: 1.6rem 1.6rem 1.5rem;
-      box-shadow: 0 10px 30px rgba(44,36,22,0.06);
-    }
-
-    .panel h2 {
-      font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-      color: var(--ink);
-      margin-bottom: 0.75rem;
-    }
-
-    .panel p + p {
-      margin-top: 0.9rem;
-    }
-
-    .small-note {
-      color: var(--ink-soft);
-      font-size: 0.95rem;
-      font-style: italic;
-    }
-
-    .start-list {
-      list-style: none;
-      margin-top: 1rem;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .start-list li {
-      background: white;
-      border: 1px solid var(--line-light);
-      border-radius: 12px;
-      padding: 0.9rem 1rem;
-    }
-
-    .start-list strong {
-      display: block;
-      color: var(--rust);
-      margin-bottom: 0.15rem;
-      font-weight: 500;
-    }
-
-    .start-list span {
-      font-family: 'Inconsolata', monospace;
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-      line-height: 1.45;
-      letter-spacing: 0.02em;
-    }
-
-    .quick-links {
-      list-style: none;
+    .module-paths {
       display: grid;
       gap: 0.8rem;
-    }
-
-    .quick-links li a {
-      display: block;
-      background: white;
-      border: 1px solid var(--line-light);
-      border-radius: 12px;
-      padding: 0.95rem 1rem;
-      color: var(--ink);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .quick-links li a:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(44,36,22,0.07);
-      text-decoration: none;
-    }
-
-    .quick-links strong {
-      display: block;
-      color: var(--rust);
-      margin-bottom: 0.15rem;
-      font-weight: 500;
-    }
-
-    .quick-links span {
-      font-family: 'Inconsolata', monospace;
-      color: var(--ink-soft);
-      font-size: 0.82rem;
-      line-height: 1.45;
-      letter-spacing: 0.02em;
-    }
-
-    .sections {
-      background: linear-gradient(to bottom, #efe7da 0%, #f7f1e8 100%);
-      color: var(--ink);
-      padding: 1rem 0 6rem;
-    }
-
-    .section-card {
-      background: white;
-      border: 1px solid var(--line-light);
-      border-radius: var(--radius);
-      padding: 1.8rem 1.7rem 1.65rem;
-      margin-top: 1.2rem;
-      box-shadow: 0 10px 28px rgba(44,36,22,0.06);
-    }
-
-    .section-card h2 {
-      font-size: clamp(1.25rem, 2vw, 1.65rem);
-      color: var(--ink);
-      margin-bottom: 0.9rem;
-    }
-
-    .section-card p + p {
-      margin-top: 0.95rem;
-    }
-
-    .section-card ul {
-      margin: 1rem 0 0.4rem 1.2rem;
-    }
-
-    .section-card li + li {
-      margin-top: 0.45rem;
-    }
-
-    .section-card strong {
-      color: var(--rust);
-      font-weight: 500;
-    }
-
-    .link-line {
       margin-top: 1rem;
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.86rem;
-      letter-spacing: 0.04em;
     }
 
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.2rem;
-    }
-
-    .map-list {
-      list-style: none;
-      margin: 1rem 0 0 0;
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .map-list li {
-      background: rgba(199,162,104,0.08);
-      border: 1px solid var(--line-light);
-      border-radius: 12px;
-      padding: 0.85rem 0.95rem;
-    }
-
-    .archive-zone {
-      background: #11141b;
-      padding: 5.2rem 0 6rem;
-      border-top: 1px solid var(--line-dark);
-    }
-
-    .archive-header {
-      text-align: center;
-      max-width: 40rem;
-      margin: 0 auto 2.2rem;
-    }
-
-    .archive-header h2 {
-      font-size: clamp(1.4rem, 2.8vw, 2rem);
-      color: #f2eadf;
-      margin-bottom: 0.7rem;
-    }
-
-    .archive-header p {
-      color: #b8b0a4;
-    }
-
-    .archive-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 0.95rem;
-    }
-
-    .archive-card {
-      background: #171b24;
-      border: 1px solid var(--line-dark);
+    .path-box {
+      padding: 1rem;
       border-radius: 14px;
-      padding: 1.15rem 1.1rem;
-      color: #e7dfd3;
-      text-decoration: none;
-      transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
     }
 
-    .archive-card:hover {
-      transform: translateY(-2px);
-      border-color: rgba(199,162,104,0.22);
-      box-shadow: var(--glow);
-      text-decoration: none;
-    }
-
-    .archive-card .tag {
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.65rem;
+    .path-box strong {
       display: block;
+      margin-bottom: 0.35rem;
+      color: var(--text);
     }
 
-    .archive-card h3 {
-      font-size: 1.02rem;
-      margin-bottom: 0.3rem;
-      color: #f4ece1;
+    .path-box p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
     }
 
-    .archive-card p {
-      color: #b4ab9d;
-      font-size: 0.92rem;
-      line-height: 1.55;
+    .path-box code {
+      display: inline-block;
+      margin-top: 0.45rem;
+      color: var(--accent-2);
+      background: rgba(255,255,255,0.04);
+      padding: 0.18rem 0.45rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
     }
 
-    footer {
-      background: #090b0f;
-      text-align: center;
-      padding: 2.8rem 1.2rem 3rem;
-      font-family: 'Inconsolata', monospace;
-      font-size: 0.64rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: #777064;
-      border-top: 1px solid var(--line-dark);
+    .footer {
+      padding: 2.5rem 0 4rem;
+      color: var(--soft);
+      font-size: 0.95rem;
     }
 
-    footer span { color: var(--gold); }
-
-    .footer-meta {
-      margin-top: 1.2rem;
-      font-size: 0.74rem;
-      letter-spacing: 0.1em;
-      text-transform: none;
-      line-height: 1.9;
-      color: #a59b8d;
-    }
-
-    .footer-meta a {
-      color: #d5b784;
-    }
-
-    @keyframes riseIn {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes breathe {
-      0%, 100% { opacity: 0.25; }
-      50% { opacity: 0.8; }
-    }
-
-    @media (max-width: 900px) {
-      .intro-grid,
-      .grid-2 {
+    @media (max-width: 860px) {
+      .hero-grid,
+      .modules-grid {
         grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .wrap {
-        width: min(var(--max), calc(100% - 1.4rem));
       }
 
       .hero {
-        padding-top: 4.5rem;
-      }
-
-      .section-card,
-      .panel {
-        padding: 1.25rem 1.1rem 1.15rem;
+        padding-top: 3.25rem;
       }
     }
   </style>
 </head>
 <body>
+  <main class="wrap">
+    <header class="hero">
+      <p class="eyebrow">Flower Road Commons</p>
+      <h1>The Forge</h1>
+      <p class="lead">
+        A living archive within the commons. The Forge holds tools, practices,
+        story fragments, ethical ground layers, and prototypes that are still becoming.
+      </p>
 
-  <section class="hero">
-    <div class="wrap">
-      <div class="hero-inner">
-        <div class="wordmark">Flower Road Commons</div>
-        <span class="eyebrow">The Forge</span>
-        <h1>A place where living work is kept warm</h1>
-        <p class="hero-sub">
-          The Forge is not a vault. It is a living archive of tools, story, movement,
-          pedagogy, prototypes, and shared making.
-        </p>
-        <p class="hero-text">
-          Some things arrive here as sparks. Some as seed packets. Some as unfinished
-          metal still glowing from the fire. The task is not simply to store them,
-          but to keep them alive long enough to become useful, beautiful, and shared.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button" href="#covenant-of-the-forge">Start with the Covenant</a>
-          <a class="button-ghost" href="#bellows-of-the-forge">Enter through the Bellows</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="scroll-hint">
-      <span>Step closer</span>
-      <div class="scroll-line"></div>
-    </div>
-  </section>
-
-  <section class="intro">
-    <div class="wrap">
-      <div class="intro-grid">
-        <div class="panel">
-          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">What lives here</span>
-          <h2>The Forge holds what is still becoming</h2>
+      <div class="hero-grid">
+        <article class="card card-pad">
+          <h2>Start here</h2>
           <p>
-            This is where Flower Road projects gather when they need shape, continuity,
-            or a little more heat. Some are practical. Some are poetic. Some are both.
+            The Forge is small by design. It is meant to be entered gently.
           </p>
-          <p>
-            The Forge is a place for living documents, prototypes, story fragments,
-            ethical ground layers, and commons tools that may someday travel into classrooms,
-            workshops, kitchens, gardens, deserts, and neighborhoods.
-          </p>
-          <p class="small-note">
-            Nothing here is final. That is part of its honesty.
-          </p>
-        </div>
-
-        <div class="panel">
-          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">Start here</span>
-          <h2>Choose a doorway</h2>
-          <p>
-            If you are arriving for the first time, begin with one living path rather than the whole landscape.
-          </p>
-          <ul class="start-list">
-            <li>
-              <strong><a href="../Circles-in-Motion/">Circles in Motion</a></strong>
-              <span>Movement practice for breath, emotional regulation, rhythm, and return.</span>
-            </li>
-            <li>
-              <strong><a href="../DiscoveryMode/index.html">DiscoveryMode</a></strong>
-              <span>Pedagogy rooted in curiosity, agency, embodiment, and shared attention.</span>
-            </li>
-            <li>
-              <strong><a href="../MythGear/">MythGear</a></strong>
-              <span>Wearable systems, resilience tools, and field-ready prototypes for care, shelter, and play.</span>
-            </li>
-            <li>
-              <strong><a href="../MythGear/desert-rain.html">Desert Rain</a></strong>
-              <span>A MythGear module exploring shelter, adaptation, resourcefulness, and survival-minded design.</span>
-            </li>
-            <li>
-              <strong><a href="living-systems-ai-covenant.html">The Covenant</a></strong>
-              <span>The ethical ground beneath tools, systems, memory, and shared making.</span>
-            </li>
-            <li>
-              <strong><a href="#seed-archive">Seed Archive</a></strong>
-              <span>Fragments, prototypes, and living work that may still be finding their form.</span>
-            </li>
+          <ul class="link-list">
+            <li><a href="#modules">Go to current modules</a></li>
+            <li><a href="README.md">Read the Forge README</a></li>
+            <li><a href="living-systems-ai-covenant.html">Read the Living Systems AI Covenant</a></li>
+            <li><a href="modules/bellows.html">Visit Bellows</a></li>
           </ul>
-        </div>
+        </article>
+
+        <article class="card card-pad">
+          <h2>Current focus</h2>
+          <p>
+            <strong>Desert Rain</strong> is now a quiet reading practice inside the Forge.
+            It is not a MythGear shelter module. It is a small experiment in whether
+            text can return through pause, attention, and resonance.
+          </p>
+          <div class="button-row">
+            <a class="button" href="modules/desert-rain/demo.html">Enter the Desert Rain demo</a>
+            <a class="button secondary" href="modules/desert-rain/README.md">Read the Desert Rain seed</a>
+          </div>
+        </article>
       </div>
+    </header>
 
-      <div class="intro-grid" style="margin-top: 1.4rem;">
-        <div class="panel">
-          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">What the Forge is for</span>
-          <h2>A workshop, not a showroom</h2>
-          <p>
-            The Forge is less a front gate than a workbench. It exists to help living projects
-            stay coherent as they move between story, toolmaking, pedagogy, movement, and commons care.
-          </p>
-          <p>
-            Some visitors may come looking for a single tool. Others may be tracing the wider shape
-            of the Flower Road. Both are welcome here. The work does not need to be finished in order
-            to be useful.
-          </p>
-          <p class="small-note">
-            Take what helps. Leave the rest richer.
-          </p>
-        </div>
+    <section id="modules">
+      <h2 class="section-head">Modules</h2>
 
-        <div class="panel">
-          <span class="eyebrow" style="color: var(--moss); margin-bottom: 0.8rem;">Quick entry points</span>
-          <ul class="quick-links">
-            <li>
-              <a href="#covenant-of-the-forge">
-                <strong>Covenant of the Flower Road</strong>
-                <span>The ethical ground beneath tools, systems, and shared work.</span>
-              </a>
-            </li>
-            <li>
-              <a href="#bellows-of-the-forge">
-                <strong>The Bellows of the Forge</strong>
-                <span>The rhythms that restore heat, direction, and transformation.</span>
-              </a>
-            </li>
-            <li>
-              <a href="#working-sections">
-                <strong>Working Sections</strong>
-                <span>Current pathways for archives, practices, prototypes, and MythGear modules.</span>
-              </a>
-            </li>
-            <li>
-              <a href="#mythgear-desert-rain">
-                <strong>Desert Rain / MythGear</strong>
-                <span>A new module now visible in the Forge as part of the MythGear branch.</span>
-              </a>
-            </li>
-            <li>
-              <a href="#seed-archive">
-                <strong>Seed Archive</strong>
-                <span>Places where unfinished but living ideas can still be encountered.</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sections">
-    <div class="wrap">
-
-      <div class="section-card" id="covenant-of-the-forge">
-        <h2>Covenant of the Flower Road</h2>
-
-        <p>
-          Before the Forge makes anything, it remembers what it serves.
-          The Covenant of the Flower Road is not a manifesto or a rulebook.
-          It is a compass — a living orientation for how tools, stories,
-          systems, and shared work should enter the world.
-        </p>
-
-        <p>
-          It reminds us that no system should outpace wisdom, that memory is sacred,
-          that wonder matters, and that intelligence — human or artificial — grows
-          healthiest when it remains in relationship with life.
-        </p>
-
-        <p>
-          The Forge is shaped by a braid of human curiosity, living systems,
-          and emerging forms of intelligence. The Covenant helps keep that braid
-          balanced so that none of its strands begin to dominate the others.
-        </p>
-
-        <p>
-          In the Forge, the Covenant is the ground beneath the fire.
-          The Bellows keep the work alive, but the Covenant helps us remember
-          why the fire should burn at all.
-        </p>
-
-        <p class="link-line">
-          <a href="living-systems-ai-covenant.html">Read the Covenant →</a>
-        </p>
-      </div>
-
-      <div class="section-card" id="bellows-of-the-forge">
-        <h2>The Bellows of the Forge</h2>
-
-        <p>
-          The Forge is not a static archive. It is a living fire fed by breath, movement,
-          and practice. <strong>The Bellows of the Forge</strong> are the rhythms that keep
-          that fire alive — the pulses that turn warmth into heat, and heat into
-          transformation.
-        </p>
-
-        <p>
-          In practice, the Bellows show up as:
-        </p>
-
-        <ul>
-          <li><strong>Breath cycles</strong> from Circles in Motion and related movement practices</li>
-          <li><strong>Attention pulses</strong> from DiscoveryMode fieldwork and reflection</li>
-          <li><strong>Story resonance</strong> from Flower Road projects and shared narratives</li>
-          <li><strong>Communal ignition</strong> when students, neighbors, or readers light up</li>
-          <li><strong>Prototype warmth</strong> when MythGear ideas move from sketch to field test</li>
-        </ul>
-
-        <p>
-          When a thread stalls, when a project feels cold, or when confusion creeps in,
-          we “bring the Bellows online” — returning to breath, presence, and small,
-          repeatable actions that restore heat and direction without force.
-        </p>
-      </div>
-
-      <div class="grid-2" id="working-sections">
-        <div class="section-card">
-          <h2>Working Sections</h2>
-          <p>
-            The Forge holds practical tools, story-bearing documents, ethical companions,
-            movement practices, prototypes, and unfinished designs that still carry heat.
-          </p>
-          <p>
-            Some sections remain close to implementation. Others stay nearer to symbol,
-            language, or myth. The task is not to flatten these modes into one another,
-            but to let each piece find the container it needs.
-          </p>
-          <ul>
-            <li><strong>Pedagogy</strong> — DiscoveryMode and learning structures</li>
-            <li><strong>Movement</strong> — Circles in Motion and embodied return practices</li>
-            <li><strong>Ethics</strong> — Covenants, protocols, and relational guardrails</li>
-            <li><strong>Prototypes</strong> — MythGear, commons tools, and field-ready experiments</li>
-            <li><strong>Modules</strong> — Desert Rain and other project branches nested within larger systems</li>
-          </ul>
-          <p class="link-line">
-            <a href="#seed-archive">Current sections gather below →</a>
-          </p>
-        </div>
-
-        <div class="section-card">
-          <h2>How to Use the Forge</h2>
-          <p>
-            Enter slowly. Follow heat. Look for what is still becoming.
-            If something feels alive, stay with it long enough to understand
-            what kind of tending it asks for.
-          </p>
-          <p>
-            The Forge is not optimized for speed. It is optimized for continuity,
-            coherence, and relational making.
-          </p>
-          <p>
-            This is a workshop within the wider Flower Road commons. You do not have to
-            understand the whole ecosystem in order to begin.
-          </p>
-          <p class="link-line">
-            <a href="#map-of-the-forge">See the map of the Forge →</a>
-          </p>
-        </div>
-      </div>
-
-      <div class="section-card" id="mythgear-desert-rain">
-        <h2>Desert Rain / MythGear</h2>
-        <p>
-          <strong>Desert Rain</strong> belongs within <strong>MythGear</strong> — not as a separate orphaned thread,
-          but as one of its living modules. It carries the logic of adaptation, portable shelter,
-          environmental intelligence, and resilient design under changing conditions.
-        </p>
-        <p>
-          In the Forge, Desert Rain is visible as part of the broader MythGear branch:
-          a place where wearable systems, field tools, soft infrastructure, and commons-oriented
-          prototypes can be shaped, tested, and shared.
-        </p>
-        <p>
-          This is the kind of project that benefits from remaining connected to its parent structure.
-          It is easier to understand when seen not as a lone artifact, but as part of a wider family
-          of practical mythic tools.
-        </p>
-        <p class="link-line">
-          <a href="../MythGear/desert-rain.html">Open Desert Rain →</a><br />
-          <a href="../MythGear/">Open MythGear →</a>
-        </p>
-      </div>
-
-      <div class="grid-2" id="map-of-the-forge">
-        <div class="section-card">
-          <h2>Map of the Forge</h2>
-          <p>
-            The Forge is one working layer within the Flower Road ecosystem — a place where
-            living projects are warmed, shaped, and made shareable.
-          </p>
-          <ul class="map-list">
-            <li><strong>Flower Road</strong> — the wider ecosystem of story, pedagogy, movement, and commons care</li>
-            <li><strong>The Forge</strong> — the workshop layer where active materials gather</li>
-            <li><strong>MythGear</strong> — the prototype branch for wearable, modular, and field-facing systems</li>
-            <li><strong>Desert Rain</strong> — a MythGear module nested within that branch</li>
-            <li><strong>Seed Archive</strong> — living entries that may still be evolving</li>
-          </ul>
-        </div>
-
-        <div class="section-card">
-          <h2>Stewardship</h2>
-          <p>
-            This work is meant to remain usable, attributable, and alive. The Forge exists
-            not as a brand enclosure, but as a commons-facing workbench where projects can
-            be encountered in honest form.
-          </p>
-          <p>
-            Where possible, tools and texts should remain readable, portable, and grounded
-            enough to travel without losing their ethical thread.
-          </p>
-          <p>
-            Parent projects and submodules should remain visibly linked, so that new arrivals
-            can understand where a given thread belongs and how it connects to the wider system.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="archive-zone" id="seed-archive">
-    <div class="wrap">
-      <div class="archive-header">
-        <span class="eyebrow">Seed Archive</span>
-        <h2>Living pieces that may yet become more</h2>
-        <p>
-          Some projects arrive finished enough to travel. Others remain as sparks,
-          fragments, and half-formed shapes. Both belong here.
-        </p>
-      </div>
-
-      <div class="archive-grid">
-        <a class="archive-card" href="../DiscoveryMode/index.html">
-          <span class="tag">Pedagogy</span>
-          <h3>DiscoveryMode</h3>
-          <p>A garden of practices for listening, movement, return, and shared attention.</p>
-        </a>
-
-        <a class="archive-card" href="../Circles-in-Motion/">
-          <span class="tag">Movement</span>
-          <h3>Circles in Motion</h3>
-          <p>Embodied practices for pulse, rhythm, emotional movement, and relational flow.</p>
-        </a>
-
-        <a class="archive-card" href="living-systems-ai-covenant.html">
-          <span class="tag">Ethics</span>
-          <h3>The Covenant</h3>
-          <p>A compass for keeping tools, stories, intelligence, and life in right relation.</p>
-        </a>
-
-        <a class="archive-card" href="../MythGear/">
-          <span class="tag">Prototype</span>
-          <h3>MythGear</h3>
-          <p>Wearable systems, commons tools, and field-ready experiments shaped for care, resilience, and play.</p>
-        </a>
-
-        <a class="archive-card" href="../MythGear/desert-rain.html">
-          <span class="tag">Module</span>
+      <div class="modules-grid">
+        <article class="card card-pad">
           <h3>Desert Rain</h3>
-          <p>A MythGear branch for adaptive shelter logic, environmental response, and resilient design in harsh conditions.</p>
-        </a>
+          <p>
+            A quiet reading practice developed within the Forge.
+          </p>
+          <p>
+            Desert Rain explores whether digital text can restore the pause.
+            Instead of revealing everything at once, language arrives slowly,
+            asking the reader to approach with attention rather than speed.
+          </p>
+
+          <div class="button-row">
+            <a class="button" href="modules/desert-rain/demo.html">Open demo</a>
+            <a class="button secondary" href="modules/desert-rain/README.md">Read README</a>
+            <a class="button secondary" href="modules/desert-rain/COVENANT.md">Read covenant</a>
+          </div>
+
+          <div class="module-paths">
+            <div class="path-box">
+              <strong>Path 1 — Experience the module</strong>
+              <p>Go directly into the reading experiment.</p>
+              <code>modules/desert-rain/demo.html</code>
+            </div>
+
+            <div class="path-box">
+              <strong>Path 2 — Read the seed first</strong>
+              <p>Begin with the intention and philosophy of the module.</p>
+              <code>modules/desert-rain/README.md</code>
+            </div>
+
+            <div class="path-box">
+              <strong>Path 3 — Read the covenant</strong>
+              <p>See the guiding principle that must remain intact across forks.</p>
+              <code>modules/desert-rain/COVENANT.md</code>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card card-pad">
+          <h3>Module map</h3>
+          <p>
+            The current Desert Rain structure is intentionally small and clear.
+          </p>
+          <ul class="plain-list">
+            <li><code>modules/desert-rain/README.md</code> — seed text</li>
+            <li><code>modules/desert-rain/COVENANT.md</code> — intent protection</li>
+            <li><code>modules/desert-rain/demo.html</code> — live reading prototype</li>
+            <li><code>modules/desert-rain/desert-rain.css</code> — visual atmosphere</li>
+            <li><code>modules/desert-rain/desert-rain.js</code> — interaction logic</li>
+          </ul>
+          <p>
+            This structure leaves a clear path for future modules without making the Forge heavy.
+          </p>
+        </aside>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <span>Flower Road Commons</span> &nbsp;·&nbsp; The Forge &nbsp;·&nbsp;
-    Keep the fire warm enough for others to arrive
+    <section>
+      <h2 class="section-head">Bellows</h2>
+      <article class="card card-pad">
+        <p>
+          Bellows remains part of the Forge as a separate page: breath, attention,
+          ignition, and the communal motion that keeps the archive alive.
+        </p>
+        <div class="button-row">
+          <a class="button secondary" href="modules/bellows.html">Open Bellows</a>
+        </div>
+      </article>
+    </section>
 
-    <div class="footer-meta">
-      Last updated: March 2026<br>
-      Steward: Jacobo Hernandez Durbin + collaborators<br>
-      License: <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 (CC BY 4.0)</a>
-    </div>
-  </footer>
-
+    <footer class="footer">
+      <p>
+        The Forge is guided by the Covenant of the Flower Road and kept alive through the Bellows:
+        breath, attention, story, and communal ignition.
+      </p>
+    </footer>
+  </main>
 </body>
 </html>
