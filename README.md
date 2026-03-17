@@ -2,8 +2,8 @@
 
 A living archive within the Flower Road commons.
 
-The Forge holds tools, practices, story fragments, ethical ground layers,
-and prototypes that are still becoming.
+The Forge contains small commons seed packets — each a lightweight, shareable unit 
+(tool, practice, or prototype) designed to be used, adapted, and grown.
 
 Start here:
 - `index.html`
