@@ -14,16 +14,15 @@ through the Bellows: breath, attention, story, and communal ignition.
 
 ## Modules
 
-The Forge contains small commons seed packets.
-
 Each module documents a tool, practice, or prototype from the Flower Road ecosystem.
+
+Modules are shared early and evolve in public.
 
 ## License
 
 See `/LICENSE` for terms of use (CC BY 4.0).  
 Code components are licensed under MIT where applicable.
 
-Modules are shared early and evolve in public.
 ## Ecosystem
 
 See `/ECOSYSTEM.md` for a working map of the Flower Road Commons.
