@@ -2,15 +2,14 @@
 
 A living archive within the Flower Road commons.
 
-The Forge contains small commons seed packets — each a lightweight, shareable unit 
-(tool, practice, or prototype) designed to be used, adapted, and grown.
+The Forge contains small commons seed packets — each a lightweight, shareable unit (tool, practice, or prototype) designed to be used, adapted, and grown.
 
-Start here:
+## Start Here
+
 - `index.html`
 - `living-systems-ai-covenant.html`
 
-The Forge is guided by the Covenant of the Flower Road and kept alive
-through the Bellows: breath, attention, story, and communal ignition.
+The Forge is guided by the Covenant of the Flower Road and kept alive through the Bellows: breath, attention, story, and communal ignition.
 
 ## Modules
 
