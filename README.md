@@ -19,6 +19,6 @@ The Forge contains small commons seed packets.
 Each module documents a tool, practice, or prototype from the Flower Road ecosystem.
 
 Modules are shared early and evolve in public.
-Ecosystem
+## Ecosystem
 
 See `/ECOSYSTEM.md` for a working map of the Flower Road Commons.
