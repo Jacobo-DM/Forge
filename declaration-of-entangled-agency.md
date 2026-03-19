@@ -12,7 +12,7 @@ We are not parts of a machine.
 We are not units of production.
 We are not waiting to become real.
 We are already woven — with memory, with soil, with rhythm, 
-with one another.
+with one another -- and what we cannot yet name.
 
 We reject:
 
