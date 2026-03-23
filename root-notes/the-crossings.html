@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crossings — Root Note</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cormorant+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1814;
+    --ink-mid: #4a4842;
+    --ink-muted: #8a8880;
+    --ink-faint: #c8c6c0;
+    --surface: #f8f6f0;
+    --border: rgba(40,36,28,0.14);
+    --border-mid: rgba(40,36,28,0.25);
+  }
+
+  html, body {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 5vw 2rem;
+  }
+
+  .page {
+    max-width: 620px;
+    width: 100%;
+    padding: 4rem 0 5rem;
+  }
+
+  .eyebrow {
+    font-family: 'Cormorant SC', serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  h1 {
+    font-size: clamp(38px, 7vw, 52px);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .standing {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink-mid);
+    line-height: 1.4;
+    margin-bottom: 2.5rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .body-text {
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+  }
+
+  .principles {
+    margin-bottom: 2.5rem;
+    padding: 1.25rem 1.5rem;
+    border-left: 1.5px solid var(--border-mid);
+  }
+
+  .principle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 2.1;
+    color: var(--ink);
+    display: block;
+  }
+
+  .principle::before {
+    content: '—';
+    margin-right: 0.6em;
+    color: var(--ink-faint);
+  }
+
+  .inner-label {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.16em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .inner-note {
+    font-size: 15px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 2rem;
+    padding: 1rem 1.25rem;
+    border: 0.5px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .keeper {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.8;
+    color: var(--ink-mid);
+  }
+
+  .keeper em {
+    font-style: italic;
+    color: var(--ink);
+  }
+
+  footer {
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 0.5px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .footer-text {
+    font-family: 'Cormorant SC', serif;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <p class="eyebrow">The Flower Road · Root Note · March 2026</p>
+  <h1>The Crossings</h1>
+  <p class="standing">Where relation is held long enough to change form.</p>
+
+  <hr>
+
+  <p class="body-text">A living structural ethic for holding crossings without forcing resolution. The second braid is not a taxonomy or a final map. It is structure in service of permeability, holding the places where strands touch, strain, nourish, trouble, echo, or almost merge. It names relation without colonizing it.</p>
+
+  <div class="principles">
+    <span class="principle">One home.</span>
+    <span class="principle">Named bridges.</span>
+    <span class="principle">Contact before explanation.</span>
+    <span class="principle">No crossing forced downstream before it is ready.</span>
+    <span class="principle">Form held long enough to change.</span>
+  </div>
+
+  <span class="inner-label">Inner note</span>
+  <p class="inner-note">The second braid is the ecosystem's immune response to its own coherence.</p>
+
+  <p class="keeper">Travels across DiscoveryMode, Forge, Regenerative Gaming, and the wider Flower Road. Not a control system. Not a funnel. Not a final map. <em>A vessel. A weather system. A root network. A braid that can loosen, tighten, split, rejoin, feed new growth, or decay into nutrient.</em></p>
+
+  <footer>
+    <span class="footer-text">The Braid · Jacobo · Elumannín · the Turtle</span>
+    <span class="footer-text">Second Braid</span>
+  </footer>
+
+</div>
+</body>
+</html>
