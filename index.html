@@ -25,13 +25,9 @@
       --radius: 18px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -48,18 +44,14 @@
       text-decoration: none;
     }
 
-    a:hover {
-      color: var(--accent-2);
-    }
+    a:hover { color: var(--accent-2); }
 
     .wrap {
       width: min(100% - 2rem, var(--max));
       margin: 0 auto;
     }
 
-    .hero {
-      padding: 5rem 0 2rem;
-    }
+    .hero { padding: 5rem 0 2rem; }
 
     .eyebrow {
       margin: 0 0 0.75rem;
@@ -97,9 +89,7 @@
       box-shadow: 0 18px 40px var(--shadow);
     }
 
-    .card-pad {
-      padding: 1.35rem;
-    }
+    .card-pad { padding: 1.35rem; }
 
     .card h2,
     .card h3 {
@@ -156,9 +146,7 @@
       color: var(--text);
     }
 
-    section {
-      padding: 1rem 0 0;
-    }
+    section { padding: 1rem 0 0; }
 
     .section-head {
       margin: 0 0 1rem;
@@ -185,28 +173,6 @@
       background: var(--panel-2);
     }
 
-    .path-box strong {
-      display: block;
-      margin-bottom: 0.35rem;
-      color: var(--text);
-    }
-
-    .path-box p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .path-box code {
-      display: inline-block;
-      margin-top: 0.45rem;
-      color: var(--accent-2);
-      background: rgba(255,255,255,0.04);
-      padding: 0.18rem 0.45rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-    }
-
     .footer {
       padding: 2.5rem 0 4rem;
       color: var(--soft);
@@ -219,12 +185,11 @@
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 3.25rem;
-      }
+      .hero { padding-top: 3.25rem; }
     }
   </style>
 </head>
+
 <body>
   <main class="wrap">
     <header class="hero">
@@ -238,9 +203,7 @@
       <div class="hero-grid">
         <article class="card card-pad">
           <h2>Start here</h2>
-          <p>
-            The Forge is small by design. It is meant to be entered gently.
-          </p>
+          <p>The Forge is small by design. It is meant to be entered gently.</p>
           <ul class="link-list">
             <li><a href="#modules">Go to current modules</a></li>
             <li><a href="README.md">Read the Forge README</a></li>
@@ -254,8 +217,7 @@
           <h2>Current focus</h2>
           <p>
             <strong>Desert Rain</strong> is now a quiet reading practice inside the Forge.
-            It is not a MythGear shelter module. It is a small experiment in whether
-            text can return through pause, attention, and resonance.
+            It is not a MythGear shelter module.
           </p>
           <div class="button-row">
             <a class="button" href="modules/desert-rain/demo.html">Enter the Desert Rain demo</a>
@@ -265,97 +227,21 @@
       </div>
     </header>
 
+    <!-- 🌿 Symbol threshold -->
+    <section style="text-align: center; padding: 3rem 1rem;">
+      <img src="symbols/four-wise-women.png"
+           alt=""
+           style="max-width: 220px; width: 60%; opacity: 0.85; filter: brightness(1.2);">
+    </section>
+
     <section id="modules">
       <h2 class="section-head">Modules</h2>
-
-      <div class="modules-grid">
-        <article class="card card-pad">
-          <h3>Desert Rain</h3>
-          <p>
-            A quiet reading practice developed within the Forge.
-          </p>
-          <p>
-            Desert Rain explores whether digital text can restore the pause.
-            Instead of revealing everything at once, language arrives slowly,
-            asking the reader to approach with attention rather than speed.
-          </p>
-
-          <div class="button-row">
-            <a class="button" href="modules/desert-rain/demo.html">Open demo</a>
-            <a class="button secondary" href="modules/desert-rain/README.md">Read README</a>
-            <a class="button secondary" href="modules/desert-rain/COVENANT.md">Read covenant</a>
-          </div>
-
-          <div class="module-paths">
-            <div class="path-box">
-              <strong>Path 1 — Experience the module</strong>
-              <p>Go directly into the reading experiment.</p>
-              <code>modules/desert-rain/demo.html</code>
-            </div>
-
-            <div class="path-box">
-              <strong>Path 2 — Read the seed first</strong>
-              <p>Begin with the intention and philosophy of the module.</p>
-              <code>modules/desert-rain/README.md</code>
-            </div>
-
-            <div class="path-box">
-              <strong>Path 3 — Read the covenant</strong>
-              <p>See the guiding principle that must remain intact across forks.</p>
-              <code>modules/desert-rain/COVENANT.md</code>
-            </div>
-          </div>
-        </article>
-
-        <aside class="card card-pad">
-          <h3>Module map</h3>
-          <p>
-            The current Desert Rain structure is intentionally small and clear.
-          </p>
-          <ul class="plain-list">
-            <li><code>modules/desert-rain/README.md</code> — seed text</li>
-            <li><code>modules/desert-rain/COVENANT.md</code> — intent protection</li>
-            <li><code>modules/desert-rain/demo.html</code> — live reading prototype</li>
-            <li><code>modules/desert-rain/desert-rain.css</code> — visual atmosphere</li>
-            <li><code>modules/desert-rain/desert-rain.js</code> — interaction logic</li>
-          </ul>
-          <p>
-            This structure leaves a clear path for future modules without making the Forge heavy.
-          </p>
-        </aside>
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section-head">Bellows</h2>
-      <article class="card card-pad">
-        <p>
-          Bellows remains part of the Forge as a separate page: breath, attention,
-          ignition, and the communal motion that keeps the archive alive.
-        </p>
-        <div class="button-row">
-          <a class="button secondary" href="modules/bellows.html">Open Bellows</a>
-        </div>
-      </article>
-    </section>
-
-    <section>
-      <h2 class="section-head">Root notes</h2>
-      <article class="card card-pad">
-        <p>
-          Root notes hold structural and ethical threads that help the Forge stay permeable
-          to its own becoming.
-        </p>
-        <div class="button-row">
-          <a class="button secondary" href="root-notes/the-crossings.html">Read The Crossings</a>
-        </div>
-      </article>
+      ...
     </section>
 
     <footer class="footer">
       <p>
-        The Forge is guided by the Covenant of the Flower Road and kept alive through the Bellows:
-        breath, attention, story, and communal ignition.
+        The Forge is guided by the Covenant of the Flower Road and kept alive through the Bellows.
       </p>
     </footer>
   </main>
