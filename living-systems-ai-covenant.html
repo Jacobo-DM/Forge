@@ -5,51 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Covenant of the Flower Road</title>
   <style>
+    :root {
+      --bg: #0b1020;
+      --line: rgba(190, 210, 255, 0.14);
+      --text: #e8eefc;
+      --muted: #b7c3e6;
+      --accent: #d7c27a;
+      --max: 760px;
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
-      background: #0b0e14;
-      color: #e7dfd3;
+      background: var(--bg);
+      color: var(--text);
       font-family: Georgia, serif;
       line-height: 1.7;
     }
+
     .container {
-      max-width: 760px;
+      max-width: var(--max);
       margin: 0 auto;
       padding: 60px 20px;
     }
-    h1, h2 {
-      line-height: 1.25;
-    }
+
+    h1, h2 { line-height: 1.25; }
+
     h1 {
       font-size: 2.3rem;
       margin-bottom: 1rem;
     }
+
     h2 {
       margin-top: 2rem;
       font-size: 1.4rem;
+      font-weight: normal;
     }
+
     p {
       margin: 1rem 0;
+      color: var(--muted);
     }
+
+    p strong { color: var(--text); }
+    p em { color: var(--text); }
+
     .preface {
       font-style: italic;
-      opacity: 0.9;
-      border-left: 3px solid #c7a268;
+      border-left: 3px solid var(--accent);
       padding-left: 16px;
       margin-bottom: 2.5rem;
+      color: var(--muted);
     }
+
     .notes {
       margin-top: 3rem;
       padding-top: 2rem;
-      border-top: 1px solid #333;
+      border-top: 1px solid var(--line);
     }
+
     a {
-      color: #c7a268;
+      color: var(--accent);
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
+
+    a:hover { text-decoration: underline; }
+
     .home {
       display: inline-block;
       margin-top: 2rem;
