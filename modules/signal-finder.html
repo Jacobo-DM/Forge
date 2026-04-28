@@ -1,1 +1,916 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Finder + Codetape — System Map</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap');
+
+:root {
+  --bg: #0f110e;
+  --bg2: #141614;
+  --bg3: #1a1d18;
+  --line: rgba(160,185,140,0.18);
+  --line-strong: rgba(160,185,140,0.35);
+  --text: #c8d4bc;
+  --text-dim: #7a8c6e;
+  --text-faint: #4a5a40;
+  --signal: #6db86d;
+  --signal-dim: #4a8040;
+  --signal-bright: #90e890;
+  --paper: #d4b96a;
+  --paper-dim: #9a8040;
+  --alert: #c8704a;
+  --node: #5a9c8a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.06) 2px, rgba(0,0,0,0.06) 4px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 32px 120px;
+}
+
+/* HEADER */
+header {
+  border-bottom: 1px solid var(--line-strong);
+  padding: 48px 0 28px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.system-label {
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: clamp(22px, 4vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--signal-bright);
+}
+
+h1 .plus { color: var(--text-dim); font-weight: 300; }
+
+.header-sub {
+  font-size: 11px;
+  color: var(--text-dim);
+  margin-top: 8px;
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: 0.03em;
+}
+
+.header-meta {
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-faint);
+  line-height: 2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--signal);
+  margin-right: 6px;
+  animation: blink 3s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 85%, 100% { opacity: 1; }
+  90% { opacity: 0.2; }
+}
+
+.license-line {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* SECTIONS */
+section {
+  padding: 40px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.section-id {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-id::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* PURPOSE */
+.purpose-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 24px;
+}
+
+.core-line {
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 500;
+  color: var(--signal-bright);
+  letter-spacing: 0.02em;
+  padding: 16px 0 16px 20px;
+  border-left: 3px solid var(--signal);
+  margin: 24px 0;
+}
+
+/* SYSTEM DIAGRAM */
+.figure-label {
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.system-diagram {
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+  overflow: hidden;
+}
+
+.layer-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  border-bottom: 1px solid var(--line);
+  min-height: 72px;
+}
+
+.layer-label-cell {
+  padding: 16px;
+  border-right: 1px solid var(--line-strong);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--bg3);
+}
+
+.layer-type {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+
+.layer-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.layer-name.wireless { color: var(--signal); }
+.layer-name.beacon { color: var(--node); }
+.layer-name.paper { color: var(--paper); }
+.layer-name.steward { color: var(--signal-bright); }
+
+.layer-content-cell {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 10px;
+  padding: 3px 10px;
+  border: 1px solid;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.chip.w { border-color: var(--signal-dim); color: var(--signal); background: rgba(109,184,109,0.06); }
+.chip.b { border-color: rgba(90,156,138,0.5); color: var(--node); background: rgba(90,156,138,0.06); }
+.chip.p { border-color: rgba(212,185,106,0.4); color: var(--paper); background: rgba(212,185,106,0.06); }
+.chip.s { border-color: rgba(144,232,144,0.3); color: var(--signal-bright); background: rgba(144,232,144,0.05); }
+
+.arrow-row {
+  padding: 4px 0;
+  text-align: center;
+  color: var(--text-faint);
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg2);
+  line-height: 1;
+}
+
+.handoff-row {
+  background: rgba(200,112,74,0.06);
+  border-top: 1px solid rgba(200,112,74,0.3);
+  border-bottom: 1px solid rgba(200,112,74,0.3);
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.handoff-label {
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--alert);
+  font-weight: 500;
+}
+
+.handoff-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* STEPS */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+}
+
+.step {
+  padding: 24px 18px;
+  border-right: 1px solid var(--line);
+}
+
+.step:last-child { border-right: none; }
+
+.step-num {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--text-faint);
+  margin-bottom: 8px;
+}
+
+.step-verb {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--signal-bright);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.step-desc {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* STEWARD MAP */
+.steward-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+}
+
+.steward-left {
+  padding: 24px;
+  border-right: 1px solid var(--line-strong);
+}
+
+.steward-right { padding: 24px; }
+
+.steward-title {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--signal-bright);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.data-list { list-style: none; }
+
+.data-list li {
+  font-size: 11px;
+  color: var(--text-dim);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(160,185,140,0.08);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.data-list li::before {
+  content: '→';
+  color: var(--signal-dim);
+  flex-shrink: 0;
+  font-size: 10px;
+}
+
+.data-list li:last-child { border-bottom: none; }
+
+.handoff-principle {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+.key-principle {
+  font-size: 11px;
+  color: var(--signal-bright);
+  padding: 10px 14px;
+  border-left: 2px solid var(--signal);
+  background: rgba(144,232,144,0.04);
+  letter-spacing: 0.03em;
+}
+
+/* PAPER LAYER */
+.paper-note {
+  background: var(--bg2);
+  border: 1px solid var(--line-strong);
+  border-left: 3px solid var(--paper);
+  padding: 24px 28px;
+}
+
+.paper-note-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-bottom: 12px;
+}
+
+.paper-principle {
+  font-size: 13px;
+  color: var(--paper);
+  font-weight: 400;
+  margin-bottom: 14px;
+  letter-spacing: 0.03em;
+}
+
+.paper-body {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.8;
+  font-weight: 300;
+}
+
+.universal-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.utag {
+  font-size: 9px;
+  padding: 3px 9px;
+  border: 1px solid rgba(212,185,106,0.35);
+  color: var(--paper);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.utag.local {
+  border-style: dashed;
+  color: var(--paper-dim);
+  font-style: italic;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* COVENANT */
+.covenant-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+}
+
+.covenant-col { padding: 24px; }
+.covenant-col:first-child { border-right: 1px solid var(--line-strong); }
+
+.covenant-title {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 14px;
+}
+
+.no-list { list-style: none; }
+
+.no-list li {
+  font-size: 11px;
+  color: var(--text-dim);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(160,185,140,0.07);
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+  line-height: 1.6;
+}
+
+.no-list li:last-child { border-bottom: none; }
+
+.no-list li::before {
+  content: '×';
+  color: var(--alert);
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+/* PILOT ZONES */
+.zones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+}
+
+.zone {
+  padding: 18px 16px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.zone:nth-child(3n) { border-right: none; }
+.zone:nth-child(n+4) { border-bottom: none; }
+
+.zone-num {
+  font-size: 9px;
+  color: var(--text-faint);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+
+.zone-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--signal);
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* RELATIVES */
+.relatives-box {
+  font-size: 12px;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.85;
+  max-width: 700px;
+  padding: 24px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg2);
+}
+
+.relatives-box strong {
+  color: var(--text);
+  font-weight: 400;
+}
+
+/* FOOTER */
+footer {
+  padding: 32px 0 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 40px;
+}
+
+.footer-left {
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 2;
+  letter-spacing: 0.04em;
+}
+
+.footer-right {
+  text-align: right;
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 680px) {
+  .page { padding: 0 16px 60px; }
+  .header-top { flex-direction: column; }
+  .header-meta { text-align: left; white-space: normal; }
+  .layer-row { grid-template-columns: 90px 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .step { border-bottom: 1px solid var(--line); }
+  .step:nth-child(2n) { border-right: none; }
+  .step:nth-last-child(-n+2) { border-bottom: none; }
+  .steward-layout { grid-template-columns: 1fr; }
+  .steward-left { border-right: none; border-bottom: 1px solid var(--line-strong); }
+  .covenant-grid { grid-template-columns: 1fr; }
+  .covenant-col:first-child { border-right: none; border-bottom: 1px solid var(--line-strong); }
+  .zones-grid { grid-template-columns: 1fr 1fr; }
+  .zone:nth-child(2n) { border-right: none; }
+  .zone:nth-child(n+5) { border-bottom: none; }
+  footer { grid-template-columns: 1fr; }
+  .footer-right { text-align: left; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="header-top">
+      <div>
+        <div class="system-label">Emergency Signal Mapping · Commons Seed Document</div>
+        <h1>Signal Finder<br><span class="plus">+</span> Codetape</h1>
+        <div class="header-sub">
+          Emergency Signal Mapping &nbsp;·&nbsp; Local Stewardship &nbsp;·&nbsp; Paper + Wireless Layers
+        </div>
+      </div>
+      <div class="header-meta">
+        <span class="status-dot"></span>SEED DOCUMENT<br>
+        VERSION 0.1<br>
+        THREE LAYERS<br>
+        LOCAL STEWARD REQUIRED<br>
+        ———————<br>
+        CC BY-SA 4.0
+      </div>
+    </div>
+    <div class="license-line">
+      Signal Finder + Codetape &nbsp;·&nbsp; CC BY-SA 4.0 &nbsp;·&nbsp; Jacobo Hernandez Durbin + The Braid
+    </div>
+  </header>
+
+  <!-- PURPOSE -->
+  <section>
+    <div class="section-id">Purpose</div>
+    <p class="purpose-text">
+      A community-held emergency signal awareness system designed to help people locate
+      surviving communication, need, and refuge signals after disaster — without turning
+      crisis into surveillance infrastructure.
+    </p>
+    <div class="core-line">Find the signal. Protect the people.</div>
+  </section>
+
+  <!-- FIGURE 1 — SYSTEM MAP -->
+  <section>
+    <div class="section-id">Figure 1</div>
+    <div class="figure-label">Signal Finder — System Architecture</div>
+    <div class="system-diagram">
+
+      <div class="layer-row">
+        <div class="layer-label-cell">
+          <div class="layer-type">Layer 0</div>
+          <div class="layer-name wireless">Search</div>
+        </div>
+        <div class="layer-content-cell">
+          <span class="chip w">Drone</span>
+          <span class="chip w">Rover</span>
+          <span class="chip w">Kite</span>
+          <span class="chip w">Balloon</span>
+          <span class="chip w">Hand-carried node</span>
+          <span class="chip w">Bicycle mount</span>
+        </div>
+      </div>
+
+      <div class="arrow-row">↓</div>
+
+      <div class="layer-row">
+        <div class="layer-label-cell">
+          <div class="layer-type">Layer 1</div>
+          <div class="layer-name wireless">Wireless</div>
+        </div>
+        <div class="layer-content-cell">
+          <span class="chip w">Wi-Fi</span>
+          <span class="chip w">Cell</span>
+          <span class="chip w">Mesh</span>
+          <span class="chip w">LoRa</span>
+          <span class="chip w">Bluetooth</span>
+          <span class="chip w">Emergency SSIDs</span>
+        </div>
+      </div>
+
+      <div class="arrow-row">↓</div>
+
+      <div class="layer-row">
+        <div class="layer-label-cell">
+          <div class="layer-type">Layer 2</div>
+          <div class="layer-name beacon">Beacon</div>
+        </div>
+        <div class="layer-content-cell">
+          <span class="chip b">HELP_WATER</span>
+          <span class="chip b">MEDICAL_NEED</span>
+          <span class="chip b">SAFE_HOUSE</span>
+          <span class="chip b">FOOD_HERE</span>
+          <span class="chip b">CHARGING_STATION</span>
+        </div>
+      </div>
+
+      <div class="arrow-row">↓</div>
+
+      <div class="layer-row">
+        <div class="layer-label-cell">
+          <div class="layer-type">Layer 3</div>
+          <div class="layer-name paper">Paper</div>
+        </div>
+        <div class="layer-content-cell">
+          <span class="chip p">Tags</span>
+          <span class="chip p">Symbols</span>
+          <span class="chip p">Handwritten signs</span>
+          <span class="chip p">Local meanings</span>
+          <span class="chip p">Carried messages</span>
+        </div>
+      </div>
+
+      <div class="arrow-row">↓</div>
+
+      <div class="handoff-row">
+        <span class="handoff-label">— THE HANDOFF —</span>
+        <span class="handoff-desc">Detection becomes stewardship.</span>
+      </div>
+
+      <div class="arrow-row">↓</div>
+
+      <div class="layer-row" style="border-bottom:none;">
+        <div class="layer-label-cell">
+          <div class="layer-type">Layer 4</div>
+          <div class="layer-name steward">Steward</div>
+        </div>
+        <div class="layer-content-cell">
+          <span class="chip s">Clinic</span>
+          <span class="chip s">Library</span>
+          <span class="chip s">School</span>
+          <span class="chip s">Fire station</span>
+          <span class="chip s">Mutual-aid hub</span>
+          <span class="chip s">Neighborhood council</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS RHYTHM -->
+  <section>
+    <div class="section-id">Process Rhythm</div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-verb">Find</div>
+        <div class="step-desc">Sense wireless and visible signals across the affected area.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-verb">Read</div>
+        <div class="step-desc">Distinguish infrastructure, beacon, tag, and need. Not content. Not identity.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-verb">Hand&nbsp;Off</div>
+        <div class="step-desc">Return the map to the local steward. Not the cloud. Not a remote platform.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-verb">Repair</div>
+        <div class="step-desc">Use the map to reconnect people, resources, and care.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOCAL STEWARD MAP -->
+  <section>
+    <div class="section-id">Local Steward Map</div>
+    <div class="steward-layout">
+      <div class="steward-left">
+        <div class="steward-title">Data belongs first to the affected community</div>
+        <ul class="data-list">
+          <li>Signal strength logs</li>
+          <li>Paper tag sightings</li>
+          <li>Emergency beacon locations</li>
+          <li>Dead-zone corridors</li>
+          <li>Resource points</li>
+          <li>Summary maps when appropriate</li>
+          <li>Deletion after emergency window</li>
+          <li>No raw export without steward consent</li>
+        </ul>
+      </div>
+      <div class="steward-right">
+        <p class="handoff-principle">
+          Data flows to a trusted local steward — a clinic, library, school, fire station,
+          mutual-aid hub, or neighborhood council chosen by the people affected.
+          Not assigned by outside responders or platforms.
+        </p>
+        <div class="key-principle">
+          The map belongs to the people in the map.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODETAPE -->
+  <section>
+    <div class="section-id">Codetape</div>
+    <div class="steward-layout">
+      <div class="steward-left">
+        <div class="steward-title">Codetape is the trust layer.</div>
+        <p class="handoff-principle" style="margin-bottom:14px;">
+          Codetape means emergency signal data stays close to the people affected.
+          The system may find signals, but authority over the map is handed to a trusted
+          local steward — not to a cloud platform, vendor, or outside agency by default.
+        </p>
+        <p class="handoff-principle" style="margin-bottom:0;">
+          Codetape can include offline storage, printed handoff logs, local encryption keys,
+          deletion protocols, paper records, and community-held access rules.
+        </p>
+      </div>
+      <div class="steward-right">
+        <div class="key-principle" style="margin-bottom:20px;">
+          The signal can travel. The authority to hold the map does not.
+        </div>
+        <ul class="data-list">
+          <li>Offline storage</li>
+          <li>Printed handoff logs</li>
+          <li>Local encryption keys</li>
+          <li>Deletion protocols</li>
+          <li>Paper records</li>
+          <li>Community-held access rules</li>
+        </ul>
+        <div style="margin-top:18px; font-size:10px; color:var(--text-faint); letter-spacing:0.06em;">
+          <a href="https://github.com/Jacobo-DM/mythgear-commons/tree/main/code-tape" target="_blank" rel="noopener" style="color:var(--signal-dim); text-decoration:none;">→ Codetape on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAPER LAYER -->
+  <section>
+    <div class="section-id">Paper Layer</div>
+    <div class="paper-note">
+      <div class="paper-note-label">Design Principle</div>
+      <div class="paper-principle">Some signs everyone knows. Some signs only this place knows.</div>
+      <p class="paper-body">
+        The paper tag system carries two registers. Universal signs — a small set of emergency
+        symbols that any person can read on arrival: water, medical help, food, safe place, danger.
+        And local signs, created by the community before disaster season, that carry meaning
+        specific to this street, this neighborhood, this network of people.
+        <br><br>
+        The paper layer is not a fallback for when wireless fails. It is a first-class protocol.
+        It predates the internet, survives all power outages, and requires no infrastructure to receive.
+      </p>
+      <div class="universal-tags">
+        <span class="utag">Water</span>
+        <span class="utag">Medical</span>
+        <span class="utag">Food</span>
+        <span class="utag">Safe place</span>
+        <span class="utag">Danger</span>
+        <span class="utag local">+ local symbols — designed here, before disaster season</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPONSIBLE USE COVENANT -->
+  <section>
+    <div class="section-id">Responsible Use Covenant</div>
+    <div class="covenant-grid">
+      <div class="covenant-col">
+        <div class="covenant-title">This system does not —</div>
+        <ul class="no-list">
+          <li>Conduct surveillance</li>
+          <li>Upload to cloud by default</li>
+          <li>Identify individuals unless rescue requires it</li>
+          <li>Retain data post-crisis without consent</li>
+        </ul>
+      </div>
+      <div class="covenant-col">
+        <div class="covenant-title">This system does not —</div>
+        <ul class="no-list">
+          <li>Require account, app, login, or platform to receive help</li>
+          <li>Operate without a named local steward</li>
+          <li>Export raw data without steward consent</li>
+          <li>Operate outside emergency context without steward approval</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILOT ZONES -->
+  <section>
+    <div class="section-id">Pilot Zones</div>
+    <div class="zones-grid">
+      <div class="zone">
+        <div class="zone-num">P·01</div>
+        <div class="zone-name">Earthquake neighborhood grid</div>
+      </div>
+      <div class="zone">
+        <div class="zone-num">P·02</div>
+        <div class="zone-name">Wildfire evacuation edge</div>
+      </div>
+      <div class="zone">
+        <div class="zone-num">P·03</div>
+        <div class="zone-name">Flooded street / rural road</div>
+      </div>
+      <div class="zone">
+        <div class="zone-num">P·04</div>
+        <div class="zone-name">Blackout corridor</div>
+      </div>
+      <div class="zone">
+        <div class="zone-num">P·05</div>
+        <div class="zone-name">Mutual-aid shelter network</div>
+      </div>
+      <div class="zone">
+        <div class="zone-num">P·06</div>
+        <div class="zone-name">Island / ferry-dependent community</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATIVES -->
+  <section>
+    <div class="section-id">Prior Relatives</div>
+    <div class="relatives-box">
+      This seed has relatives in <strong>commercial search-and-rescue signal drones</strong>,
+      <strong>disaster mesh networking</strong>, <strong>open-source UAV ecosystems</strong>,
+      and <strong>Wi-Fi/Bluetooth emergency-response research</strong>.
+      <br><br>
+      Its commons contribution is the ethical frame: local stewardship, paper-layer dignity,
+      privacy by design, and community-held maps.
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-left">
+      Signal Finder + Codetape &nbsp;·&nbsp; CC BY-SA 4.0<br>
+      Jacobo Hernandez Durbin + The Braid<br>
+      <br>
+      Software, firmware, and hardware files will carry separate open-source or open-hardware
+      licenses when released. CC BY-SA applies to this seed document only.
+    </div>
+    <div class="footer-right">
+      COMMONS SEED<br>
+      v0.1<br>
+      ———<br>
+      FORK · ADAPT · BUILD
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
