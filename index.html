@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>The Forge</title>
+
   <style>
     body {
       margin: 0;
@@ -21,12 +22,17 @@
 
     h1 {
       font-size: 64px;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      line-height: 1.05;
     }
 
     h2 {
-      margin-top: 40px;
+      margin-top: 48px;
       font-size: 28px;
+    }
+
+    h3 {
+      margin-top: 0;
     }
 
     p {
@@ -34,23 +40,13 @@
       max-width: 700px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 30px;
+    ul {
+      padding-left: 20px;
+      color: #9fb3c8;
     }
 
-    .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 20px;
-      backdrop-filter: blur(6px);
-    }
-
-    .card h3 {
-      margin-top: 0;
+    li {
+      margin-bottom: 10px;
     }
 
     a {
@@ -62,58 +58,102 @@
       text-decoration: underline;
     }
 
+    .small {
+      font-size: 14px;
+      color: #6f859c;
+      letter-spacing: 0.08em;
+    }
+
+    .intro {
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(6px);
+    }
+
+    .wide {
+      grid-column: 1 / -1;
+    }
+
     .footer {
       margin-top: 80px;
       font-size: 14px;
       color: #6f859c;
     }
 
-    .small {
-      font-size: 14px;
-      color: #6f859c;
-    }
-
     @media (max-width: 700px) {
+      h1 {
+        font-size: 42px;
+      }
+
       .grid {
         grid-template-columns: 1fr;
       }
 
-      h1 {
-        font-size: 42px;
+      .wide {
+        grid-column: auto;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
 
     <div class="small">FLOWER ROAD COMMONS</div>
     <h1>The Forge</h1>
 
-    <p>
-      A living archive within the commons.  
+    <p class="intro">
+      A living archive within the commons.
       The Forge holds tools, practices, story fragments, and ethical ground layers that are still becoming.
     </p>
 
-  <div class="card">
-  <h3>Where to begin</h3>
-  <p>For most people, the best way into the Forge is through concrete offerings.</p>
-  <ul>
-    <li><a href="modules/sunhearth.html">SunHearth</a> — practical warmth, household scale, and grounded usefulness</li>
-    <li><a href="modules/gofu.html">Gofu Commons</a> — nourishment, regeneration, and shared possibility</li>
-    <li><a href="declarations/civic-witness-charter.md">Civic Witness Charter</a> — an ethic of attention, care, and responsibility</li>
-  </ul>
-  </div>
+    <div class="grid">
+
+      <div class="card">
+        <h3>Where to begin</h3>
+        <p>
+          For most people, the best way into the Forge is through concrete offerings.
+        </p>
+        <ul>
+          <li><a href="modules/sunhearth.html">SunHearth</a> — practical warmth, household scale, and grounded usefulness</li>
+          <li><a href="modules/gofu.html">Gofu Commons</a> — nourishment, regeneration, and shared possibility</li>
+          <li><a href="declarations/civic-witness-charter.md">Civic Witness Charter</a> — an ethic of attention, care, and responsibility</li>
+        </ul>
+      </div>
 
       <div class="card">
         <h3>Current path</h3>
         <p>
-          Desert Rain is a quiet reading practice.  
+          Desert Rain is a quiet reading practice.
           It works with attention, rhythm, and the slow return of language after silence.
         </p>
         <p>
           <a href="modules/desert-rain/index.html">Enter the practice →</a><br/>
           <a href="modules/desert-rain/seed.html">Read the seed</a>
+        </p>
+      </div>
+
+      <div class="card wide">
+        <h3>Root note: The Empty Hand Is Not Empty</h3>
+        <p>
+          A Flower Road root note on wonder, permission, and embodied remembrance.
+          Begin with what has fallen. Begin with what is near. Begin with what asks nothing from you but notice.
+        </p>
+        <p>
+          <a href="root-notes/the-empty-hand-is-not-empty.html">Read the root note →</a>
         </p>
       </div>
 
@@ -125,26 +165,54 @@
 
       <div class="card">
         <h3>Desert Rain</h3>
-        <p>A quiet reading practice centered on attention and return.</p>
+        <p>
+          A quiet reading practice centered on attention and return.
+        </p>
         <a href="modules/desert-rain/index.html">Enter →</a>
       </div>
 
       <div class="card">
         <h3>Bellows</h3>
-        <p>A breathing pattern for rhythm, movement, and listening.</p>
+        <p>
+          A breathing pattern for rhythm, movement, and listening.
+        </p>
         <a href="modules/bellows.html">Open →</a>
       </div>
 
       <div class="card">
         <h3>Threshold</h3>
-        <p>A gentle way of entering without needing to understand everything at once.</p>
+        <p>
+          A gentle way of entering without needing to understand everything at once.
+        </p>
         <a href="threshold.html">Enter →</a>
       </div>
 
     </div>
 
+    <h2>Root Notes</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>The Empty Hand Is Not Empty</h3>
+        <p>
+          A note on wonder, permission, pine cones, embodied memory, and the open gate.
+        </p>
+        <a href="root-notes/the-empty-hand-is-not-empty.html">Read →</a>
+      </div>
+
+      <div class="card">
+        <h3>The Crossings</h3>
+        <p>
+          A root note for thresholds, relation, and the places where the path changes shape.
+        </p>
+        <a href="root-notes/the-crossings.html">Read →</a>
+      </div>
+
+    </div>
+
     <div class="footer">
-      The Forge is guided by the Covenant of the Flower Road  
+      The Forge is guided by the Covenant of the Flower Road
       and kept alive through the Bellows.
     </div>
 
