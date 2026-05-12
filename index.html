@@ -91,9 +91,9 @@
     }
 
     .hero {
-      padding: 68px 0 44px;
+      padding: 68px 0 36px;
       display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      grid-template-columns: minmax(0, 1.15fr) minmax(260px, 0.85fr);
       gap: 32px;
       align-items: center;
     }
@@ -121,25 +121,46 @@
       margin: 0;
     }
 
-    .photo-card {
-      margin: 0;
+    .hero-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: 0 22px 70px var(--shadow);
-      overflow: hidden;
+      padding: 28px;
     }
 
-    .photo-card img {
+    .hero-card .small-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .sigil-wrap {
+      display: flex;
+      justify-content: center;
+      padding: 8px 0 28px;
+    }
+
+    .forge-sigil {
       display: block;
-      width: 100%;
+      width: min(360px, 76vw);
       height: auto;
-    }
-
-    .photo-card figcaption {
-      padding: 14px 16px 16px;
-      color: var(--quiet);
-      font-size: 0.88rem;
+      opacity: 0.84;
+      filter:
+        invert(86%)
+        sepia(24%)
+        saturate(540%)
+        hue-rotate(356deg)
+        brightness(96%)
+        contrast(92%);
     }
 
     .section {
@@ -220,10 +241,21 @@
       letter-spacing: 0.08em;
     }
 
-    .tag.root { border-color: rgba(216, 182, 108, 0.36); }
-    .tag.module { border-color: rgba(143, 183, 217, 0.38); }
-    .tag.story { border-color: rgba(215, 139, 104, 0.42); }
-    .tag.threshold { border-color: rgba(159, 199, 164, 0.42); }
+    .tag.root {
+      border-color: rgba(216, 182, 108, 0.36);
+    }
+
+    .tag.module {
+      border-color: rgba(143, 183, 217, 0.38);
+    }
+
+    .tag.story {
+      border-color: rgba(215, 139, 104, 0.42);
+    }
+
+    .tag.threshold {
+      border-color: rgba(159, 199, 164, 0.42);
+    }
 
     .arrow {
       margin-top: 22px;
@@ -286,6 +318,7 @@
   <div class="page">
     <header>
       <div class="mark">Flower Road Commons</div>
+
       <nav aria-label="Forge navigation">
         <a href="threshold.html">Threshold</a>
         <a href="modules/desert-rain/index.html">Desert Rain</a>
@@ -298,23 +331,36 @@
       <section class="hero">
         <div>
           <h1>The Forge</h1>
+
           <p class="subtitle">
             A living archive within the commons. The Forge holds tools, practices,
             story seeds, root notes, and ethical ground layers that are still becoming.
           </p>
+
           <p class="hero-line">
             Start with the fruits before the cosmology. Start with the practices
             before the magnitude. Enter slowly. Let each doorway be enough.
           </p>
         </div>
 
-        <figure class="photo-card">
-          <img src="four-wise-women.png" alt="Four wise women photograph for the Forge" onerror="this.closest('figure').style.display='none';" />
-          <figcaption>
-            A visual anchor for the Forge. The image is present, but the page does not depend on it.
-          </figcaption>
-        </figure>
+        <aside class="hero-card">
+          <div class="small-label">Current orientation</div>
+          <p>
+            The Forge is being cleaned into clearer doors: threshold, modules,
+            story seeds, and root notes. Not everything needs to appear at the
+            front gate. Some things are still ripening.
+          </p>
+        </aside>
       </section>
+
+      <div class="sigil-wrap" aria-hidden="true">
+        <img
+          class="forge-sigil"
+          src="assets/forge-sigil.png"
+          alt=""
+          onerror="this.parentElement.style.display='none';"
+        />
+      </div>
 
       <section class="section" id="begin">
         <div class="section-kicker">Where to begin</div>
@@ -329,7 +375,10 @@
             <div>
               <span class="tag threshold">Threshold</span>
               <h3>Threshold</h3>
-              <p>A gentle way of entering the Forge without needing to understand everything at once.</p>
+              <p>
+                A gentle way of entering the Forge without needing to understand
+                everything at once.
+              </p>
             </div>
             <div class="arrow">Enter →</div>
           </a>
@@ -338,7 +387,10 @@
             <div>
               <span class="tag module">Practice</span>
               <h3>Desert Rain</h3>
-              <p>A quiet reading practice centered on attention, rhythm, and the slow return of language after silence.</p>
+              <p>
+                A quiet reading practice centered on attention, rhythm, and the
+                slow return of language after silence.
+              </p>
             </div>
             <div class="arrow">Enter the module →</div>
           </a>
@@ -347,7 +399,10 @@
             <div>
               <span class="tag root">Root Note</span>
               <h3>When We Stop Pretending</h3>
-              <p>A threshold essay on education, extraction, and the moment learning remembers its natural habitat.</p>
+              <p>
+                A threshold essay on education, extraction, and the moment
+                learning remembers its natural habitat.
+              </p>
             </div>
             <div class="arrow">Read →</div>
           </a>
@@ -367,7 +422,10 @@
             <div>
               <span class="tag story">Story Seeds</span>
               <h3>When the Wolf Cries, Boy</h3>
-              <p>A protected story seed and threshold prompt about the lump in the throat, misrecognition, silence, and release.</p>
+              <p>
+                A protected story seed and threshold prompt about the lump in the
+                throat, misrecognition, silence, and release.
+              </p>
             </div>
             <div class="arrow">Open story-seed doorway →</div>
           </a>
@@ -376,7 +434,10 @@
             <div>
               <span class="tag root">Root Note</span>
               <h3>The Empty Hand Is Not Empty</h3>
-              <p>A Flower Road note on wonder, permission, pine cones, embodied memory, and the open gate.</p>
+              <p>
+                A Flower Road note on wonder, permission, pine cones, embodied
+                memory, and the open gate.
+              </p>
             </div>
             <div class="arrow">Read →</div>
           </a>
@@ -385,7 +446,10 @@
             <div>
               <span class="tag root">Root Note</span>
               <h3>The Crossings</h3>
-              <p>A quiet structural note for relation, thresholds, and the places where the path changes shape.</p>
+              <p>
+                A quiet structural note for relation, thresholds, and the places
+                where the path changes shape.
+              </p>
             </div>
             <div class="arrow">Read →</div>
           </a>
@@ -405,7 +469,9 @@
             <div>
               <span class="tag module">Module</span>
               <h3>Desert Rain</h3>
-              <p>A quiet reading practice centered on attention and return.</p>
+              <p>
+                A quiet reading practice centered on attention and return.
+              </p>
             </div>
             <div class="arrow">Enter →</div>
           </a>
@@ -414,7 +480,10 @@
             <div>
               <span class="tag module">Pattern</span>
               <h3>Bellows</h3>
-              <p>A breathing pattern for rhythm, movement, MythWear, RageDance, DiscoveryMode, and quiet walks.</p>
+              <p>
+                A breathing pattern for rhythm, movement, MythWear, RageDance,
+                DiscoveryMode, and quiet walks.
+              </p>
             </div>
             <div class="arrow">Open →</div>
           </a>
@@ -423,15 +492,66 @@
             <div>
               <span class="tag module">Commons Seed</span>
               <h3>Signal Finder</h3>
-              <p>A field-oriented commons seed for finding living signals without harvesting people.</p>
+              <p>
+                A field-oriented commons seed for finding living signals without
+                harvesting people.
+              </p>
             </div>
             <div class="arrow">Open →</div>
           </a>
         </div>
       </section>
 
+      <section class="section" id="story-seeds">
+        <div class="section-kicker">Story Seeds</div>
+        <h2>Story first. Meaning later.</h2>
+        <p>
+          Story seeds belong near the Forge, but they should not be forced to
+          explain themselves too early. Some are fragments. Some are prompts.
+          Some are protected embers.
+        </p>
+
+        <div class="grid">
+          <a class="card" href="story-seeds/index.html">
+            <div>
+              <span class="tag story">Doorway</span>
+              <h3>Story Seeds Index</h3>
+              <p>
+                The clean public doorway for short narrative seeds, including
+                the Wolf story and its protected prompt placeholder.
+              </p>
+            </div>
+            <div class="arrow">Open →</div>
+          </a>
+
+          <a class="card" href="story-seeds/when-the-wolf-cries-boy.md">
+            <div>
+              <span class="tag story">Story</span>
+              <h3>When the Wolf Cries, Boy</h3>
+              <p>
+                A father, a son, a forest, a young wolf, and the recognition that
+                arrives without explanation.
+              </p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
+
+          <a class="card" href="story-seeds/index.html">
+            <div>
+              <span class="tag story">Placeholder</span>
+              <h3>The Wolf Who Cried, Boy</h3>
+              <p>
+                A protected DiscoveryMode threshold prompt. Do not over-explain
+                the wolf. Do not force the sharing.
+              </p>
+            </div>
+            <div class="arrow">Held in the story-seeds index →</div>
+          </a>
+        </div>
+      </section>
+
       <section class="section" id="root-notes">
-        <div class="section-kicker">Root notes</div>
+        <div class="section-kicker">Root Notes</div>
         <h2>Orientation, not explanation.</h2>
         <p>
           Root notes help the work remain in right relation. They should not all
@@ -443,7 +563,10 @@
             <div>
               <span class="tag root">Essay</span>
               <h3>When We Stop Pretending</h3>
-              <p>Education, extraction, encounter, and the possibility of standing somewhere real.</p>
+              <p>
+                Education, extraction, encounter, and the possibility of standing
+                somewhere real.
+              </p>
             </div>
             <div class="arrow">Read →</div>
           </a>
@@ -452,7 +575,10 @@
             <div>
               <span class="tag root">Root Note</span>
               <h3>The Empty Hand Is Not Empty</h3>
-              <p>Begin with what has fallen. Begin with what is near. Begin with what asks nothing from you but notice.</p>
+              <p>
+                Begin with what has fallen. Begin with what is near. Begin with
+                what asks nothing from you but notice.
+              </p>
             </div>
             <div class="arrow">Read →</div>
           </a>
@@ -461,22 +587,26 @@
             <div>
               <span class="tag root">Tuning Fork</span>
               <h3>The Braid Remembers in Contact</h3>
-              <p>A quiet note against polish that outruns encounter.</p>
+              <p>
+                A quiet note against polish that outruns encounter.
+              </p>
             </div>
             <div class="arrow">Read note →</div>
           </a>
         </div>
 
         <div class="wide-note">
-          <strong>Placement note:</strong> SunHearth, Gofu Commons, and Civic Witness can return to this page once their files are live.
-          Until then, they are better treated as “not yet linked” rather than front-page doors.
+          <strong>Placement note:</strong> SunHearth, Gofu Commons, Civic Witness,
+          and other still-forming materials can return to this page once their
+          files are live. Until then, they are better treated as “not yet linked”
+          rather than front-page doors.
         </div>
       </section>
     </main>
 
     <footer>
       <span>The Forge is guided by the Covenant of the Flower Road.</span>
-      <span>Working commons archive · v0.2</span>
+      <span>Working commons archive · v0.3</span>
     </footer>
   </div>
 </body>
