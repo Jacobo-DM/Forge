@@ -27,17 +27,18 @@
     }
 
     h2 {
-      margin-top: 48px;
+      margin-top: 56px;
       font-size: 28px;
     }
 
     h3 {
       margin-top: 0;
+      margin-bottom: 12px;
     }
 
     p {
       color: #9fb3c8;
-      max-width: 700px;
+      max-width: 720px;
     }
 
     ul {
@@ -62,10 +63,12 @@
       font-size: 14px;
       color: #6f859c;
       letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .intro {
-      margin-bottom: 30px;
+      margin-bottom: 34px;
+      font-size: 18px;
     }
 
     .grid {
@@ -79,12 +82,26 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 16px;
-      padding: 20px;
+      padding: 22px;
       backdrop-filter: blur(6px);
     }
 
     .wide {
       grid-column: 1 / -1;
+    }
+
+    .threshold {
+      border-color: rgba(159, 211, 255, 0.22);
+      background: rgba(159, 211, 255, 0.045);
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #6f859c;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .footer {
@@ -112,7 +129,7 @@
 <body>
   <div class="container">
 
-    <div class="small">FLOWER ROAD COMMONS</div>
+    <div class="small">Flower Road Commons</div>
     <h1>The Forge</h1>
 
     <p class="intro">
@@ -125,46 +142,37 @@
       <div class="card">
         <h3>Where to begin</h3>
         <p>
-          For most people, the best way into the Forge is through concrete offerings.
+          Enter through something concrete. The Forge is not meant to be understood all at once.
+          Start with a tool, a practice, or a small act of repair.
         </p>
         <ul>
           <li><a href="modules/sunhearth.html">SunHearth</a> — practical warmth, household scale, and grounded usefulness</li>
           <li><a href="modules/gofu.html">Gofu Commons</a> — nourishment, regeneration, and shared possibility</li>
-          <li><a href="declarations/civic-witness-charter.md">Civic Witness Charter</a> — an ethic of attention, care, and responsibility</li>
+          <li><a href="threshold.html">Threshold</a> — a gentle way of entering without needing to understand everything</li>
         </ul>
       </div>
 
       <div class="card">
-        <h3>Current path</h3>
+        <h3>Current practice</h3>
         <p>
-          Desert Rain is a quiet reading practice.
-          It works with attention, rhythm, and the slow return of language after silence.
+          Desert Rain is a quiet reading practice. It works with attention, rhythm,
+          and the slow return of language after silence.
         </p>
         <p>
-          <a href="modules/desert-rain/index.html">Enter the practice →</a><br/>
+          <a href="modules/desert-rain/index.html">Enter Desert Rain →</a><br/>
           <a href="modules/desert-rain/seed.html">Read the seed</a>
         </p>
       </div>
 
-      <div class="card wide">
-        <h3>Root note: When We Stop Pretending</h3>
+      <div class="card wide threshold">
+        <span class="tag">Threshold Root Note</span>
+        <h3>When We Stop Pretending</h3>
         <p>
-          A threshold essay on education, extraction, and the moment learning remembers its natural habitat.
-          This is not a proposal. It is a place you can stand.
+          An essay on education, extraction, and the moment learning remembers its natural habitat.
+          It is not a proposal. It is a place you can stand.
         </p>
         <p>
           <a href="root-notes/when-we-stop-pretending.html">Read the root note →</a>
-        </p>
-      </div>
-
-      <div class="card wide">
-        <h3>Root note: The Empty Hand Is Not Empty</h3>
-        <p>
-          A Flower Road root note on wonder, permission, and embodied remembrance.
-          Begin with what has fallen. Begin with what is near. Begin with what asks nothing from you but notice.
-        </p>
-        <p>
-          <a href="root-notes/the-empty-hand-is-not-empty.html">Read the root note →</a>
         </p>
       </div>
 
@@ -173,6 +181,22 @@
     <h2>Modules</h2>
 
     <div class="grid">
+
+      <div class="card">
+        <h3>SunHearth</h3>
+        <p>
+          Practical warmth, household scale, and grounded usefulness.
+        </p>
+        <a href="modules/sunhearth.html">Open →</a>
+      </div>
+
+      <div class="card">
+        <h3>Gofu Commons</h3>
+        <p>
+          Nourishment, regeneration, and shared possibility.
+        </p>
+        <a href="modules/gofu.html">Open →</a>
+      </div>
 
       <div class="card">
         <h3>Desert Rain</h3>
@@ -190,27 +214,11 @@
         <a href="modules/bellows.html">Open →</a>
       </div>
 
-      <div class="card">
-        <h3>Threshold</h3>
-        <p>
-          A gentle way of entering without needing to understand everything at once.
-        </p>
-        <a href="threshold.html">Enter →</a>
-      </div>
-
     </div>
 
     <h2>Root Notes</h2>
 
     <div class="grid">
-
-      <div class="card">
-        <h3>When We Stop Pretending</h3>
-        <p>
-          A Forge threshold essay. Education, extraction, encounter, and the possibility of standing somewhere real.
-        </p>
-        <a href="root-notes/when-we-stop-pretending.md">Read →</a>
-      </div>
 
       <div class="card">
         <h3>The Empty Hand Is Not Empty</h3>
@@ -230,9 +238,31 @@
 
     </div>
 
+    <h2>Declarations</h2>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Civic Witness Charter</h3>
+        <p>
+          An ethic of attention, care, and responsibility under pressure.
+        </p>
+        <a href="declarations/civic-witness-charter.md">Read →</a>
+      </div>
+
+      <div class="card">
+        <h3>Covenant of the Flower Road</h3>
+        <p>
+          The deeper ethical ground beneath the Forge and its commons offerings.
+        </p>
+        <a href="declarations/covenant-of-the-flower-road.md">Read →</a>
+      </div>
+
+    </div>
+
     <div class="footer">
       The Forge is guided by the Covenant of the Flower Road
-      and kept alive through the Bellows.
+      and kept alive through practice, witness, repair, and return.
     </div>
 
   </div>
