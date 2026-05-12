@@ -2,269 +2,482 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Forge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>The Forge | Flower Road Commons</title>
+  <meta name="description" content="The Forge is a living archive within the Flower Road Commons: tools, practices, story seeds, root notes, and ethical ground layers still becoming." />
 
   <style>
+    :root {
+      --bg: #050a12;
+      --bg-soft: #0b1624;
+      --bg-card: rgba(12, 25, 40, 0.82);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #e8eef5;
+      --muted: #aebbc8;
+      --quiet: #7f8d9c;
+      --gold: #d8b66c;
+      --blue: #8fb7d9;
+      --green: #9fc7a4;
+      --ember: #d78b68;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at top, #0b1a2a, #050a12);
-      color: #e6edf3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(71, 111, 145, 0.24), transparent 34rem),
+        radial-gradient(circle at top right, rgba(216, 182, 108, 0.16), transparent 30rem),
+        linear-gradient(180deg, #08111d 0%, var(--bg) 58%, #03070d 100%);
+      color: var(--text);
       line-height: 1.6;
     }
 
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-
-    h1 {
-      font-size: 64px;
-      margin: 0 0 10px;
-      line-height: 1.05;
-    }
-
-    h2 {
-      margin-top: 56px;
-      font-size: 28px;
-    }
-
-    h3 {
-      margin-top: 0;
-      margin-bottom: 12px;
-    }
-
-    p {
-      color: #9fb3c8;
-      max-width: 720px;
-    }
-
-    ul {
-      padding-left: 20px;
-      color: #9fb3c8;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
     a {
-      color: #9fd3ff;
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
+    a:hover,
+    a:focus {
       text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
-    .small {
-      font-size: 14px;
-      color: #6f859c;
-      letter-spacing: 0.08em;
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      padding: 28px 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mark {
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 700;
     }
 
-    .intro {
-      margin-bottom: 34px;
-      font-size: 18px;
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .hero {
+      padding: 68px 0 44px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+      gap: 32px;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.4rem);
+      line-height: 0.92;
+      margin: 0 0 22px;
+      letter-spacing: -0.07em;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      font-size: clamp(1.12rem, 2vw, 1.45rem);
+      color: var(--muted);
+      margin: 0 0 28px;
+    }
+
+    .hero-line {
+      max-width: 680px;
+      font-size: 1.05rem;
+      color: var(--text);
+      border-left: 3px solid var(--gold);
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .photo-card {
+      margin: 0;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 22px 70px var(--shadow);
+      overflow: hidden;
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .photo-card figcaption {
+      padding: 14px 16px 16px;
+      color: var(--quiet);
+      font-size: 0.88rem;
+    }
+
+    .section {
+      margin-top: 34px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      line-height: 1.1;
+      margin: 0 0 12px;
+      letter-spacing: -0.035em;
+    }
+
+    .section p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 0 18px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 30px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 20px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
+      min-height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       padding: 22px;
-      backdrop-filter: blur(6px);
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.22);
     }
 
-    .wide {
-      grid-column: 1 / -1;
+    .card:hover {
+      border-color: rgba(216, 182, 108, 0.55);
+      transform: translateY(-1px);
     }
 
-    .threshold {
-      border-color: rgba(159, 211, 255, 0.22);
-      background: rgba(159, 211, 255, 0.045);
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.18rem;
+      line-height: 1.2;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
     }
 
     .tag {
-      display: inline-block;
-      margin-bottom: 12px;
-      color: #6f859c;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.76rem;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .footer {
-      margin-top: 80px;
-      font-size: 14px;
-      color: #6f859c;
+    .tag.root { border-color: rgba(216, 182, 108, 0.36); }
+    .tag.module { border-color: rgba(143, 183, 217, 0.38); }
+    .tag.story { border-color: rgba(215, 139, 104, 0.42); }
+    .tag.threshold { border-color: rgba(159, 199, 164, 0.42); }
+
+    .arrow {
+      margin-top: 22px;
+      color: var(--gold);
+      font-weight: 650;
     }
 
-    @media (max-width: 700px) {
-      h1 {
-        font-size: 42px;
+    .wide-note {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px dashed rgba(216, 182, 108, 0.36);
+      border-radius: var(--radius);
+      background: rgba(216, 182, 108, 0.055);
+      color: var(--muted);
+    }
+
+    .wide-note strong {
+      color: var(--text);
+    }
+
+    footer {
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 0.92rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 860px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        justify-content: flex-start;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 46px;
       }
 
       .grid {
         grid-template-columns: 1fr;
       }
 
-      .wide {
-        grid-column: auto;
+      .card {
+        min-height: auto;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="container">
+  <div class="page">
+    <header>
+      <div class="mark">Flower Road Commons</div>
+      <nav aria-label="Forge navigation">
+        <a href="threshold.html">Threshold</a>
+        <a href="modules/desert-rain/index.html">Desert Rain</a>
+        <a href="story-seeds/index.html">Story Seeds</a>
+        <a href="root-notes/the-empty-hand-is-not-empty.html">Root Notes</a>
+      </nav>
+    </header>
 
-    <div class="small">Flower Road Commons</div>
-    <h1>The Forge</h1>
+    <main>
+      <section class="hero">
+        <div>
+          <h1>The Forge</h1>
+          <p class="subtitle">
+            A living archive within the commons. The Forge holds tools, practices,
+            story seeds, root notes, and ethical ground layers that are still becoming.
+          </p>
+          <p class="hero-line">
+            Start with the fruits before the cosmology. Start with the practices
+            before the magnitude. Enter slowly. Let each doorway be enough.
+          </p>
+        </div>
 
-    <p class="intro">
-      A living archive within the commons.
-      The Forge holds tools, practices, story fragments, and ethical ground layers that are still becoming.
-    </p>
+        <figure class="photo-card">
+          <img src="four-wise-women.png" alt="Four wise women photograph for the Forge" onerror="this.closest('figure').style.display='none';" />
+          <figcaption>
+            A visual anchor for the Forge. The image is present, but the page does not depend on it.
+          </figcaption>
+        </figure>
+      </section>
 
-    <div class="grid">
-
-      <div class="card">
-        <h3>Where to begin</h3>
+      <section class="section" id="begin">
+        <div class="section-kicker">Where to begin</div>
+        <h2>Clear doors first.</h2>
         <p>
-          Enter through something concrete. The Forge is not meant to be understood all at once.
-          Start with a tool, a practice, or a small act of repair.
+          These are the best entry points right now: concrete enough to enter,
+          but still connected to the deeper braid.
         </p>
-        <ul>
-          <li><a href="modules/sunhearth.html">SunHearth</a> — practical warmth, household scale, and grounded usefulness</li>
-          <li><a href="modules/gofu.html">Gofu Commons</a> — nourishment, regeneration, and shared possibility</li>
-          <li><a href="threshold.html">Threshold</a> — a gentle way of entering without needing to understand everything</li>
-        </ul>
-      </div>
 
-      <div class="card">
-        <h3>Current practice</h3>
+        <div class="grid">
+          <a class="card" href="threshold.html">
+            <div>
+              <span class="tag threshold">Threshold</span>
+              <h3>Threshold</h3>
+              <p>A gentle way of entering the Forge without needing to understand everything at once.</p>
+            </div>
+            <div class="arrow">Enter →</div>
+          </a>
+
+          <a class="card" href="modules/desert-rain/index.html">
+            <div>
+              <span class="tag module">Practice</span>
+              <h3>Desert Rain</h3>
+              <p>A quiet reading practice centered on attention, rhythm, and the slow return of language after silence.</p>
+            </div>
+            <div class="arrow">Enter the module →</div>
+          </a>
+
+          <a class="card" href="root-notes/when-we-stop-pretending.html">
+            <div>
+              <span class="tag root">Root Note</span>
+              <h3>When We Stop Pretending</h3>
+              <p>A threshold essay on education, extraction, and the moment learning remembers its natural habitat.</p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="current">
+        <div class="section-kicker">Current path</div>
+        <h2>What is warm now.</h2>
         <p>
-          Desert Rain is a quiet reading practice. It works with attention, rhythm,
-          and the slow return of language after silence.
+          These pieces are active in the Forge and should remain easy to find
+          without making the front page feel like a map of everything.
         </p>
+
+        <div class="grid">
+          <a class="card" href="story-seeds/index.html">
+            <div>
+              <span class="tag story">Story Seeds</span>
+              <h3>When the Wolf Cries, Boy</h3>
+              <p>A protected story seed and threshold prompt about the lump in the throat, misrecognition, silence, and release.</p>
+            </div>
+            <div class="arrow">Open story-seed doorway →</div>
+          </a>
+
+          <a class="card" href="root-notes/the-empty-hand-is-not-empty.html">
+            <div>
+              <span class="tag root">Root Note</span>
+              <h3>The Empty Hand Is Not Empty</h3>
+              <p>A Flower Road note on wonder, permission, pine cones, embodied memory, and the open gate.</p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
+
+          <a class="card" href="root-notes/the-crossings.html">
+            <div>
+              <span class="tag root">Root Note</span>
+              <h3>The Crossings</h3>
+              <p>A quiet structural note for relation, thresholds, and the places where the path changes shape.</p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="modules">
+        <div class="section-kicker">Modules</div>
+        <h2>Contained experiments and practices.</h2>
         <p>
-          <a href="modules/desert-rain/index.html">Enter Desert Rain →</a><br/>
-          <a href="modules/desert-rain/seed.html">Read the seed</a>
+          Modules are practical or semi-practical seed forms. They may be early,
+          but they should have enough shape that someone can understand the doorway.
         </p>
-      </div>
 
-      <div class="card wide threshold">
-        <span class="tag">Threshold Root Note</span>
-        <h3>When We Stop Pretending</h3>
+        <div class="grid">
+          <a class="card" href="modules/desert-rain/index.html">
+            <div>
+              <span class="tag module">Module</span>
+              <h3>Desert Rain</h3>
+              <p>A quiet reading practice centered on attention and return.</p>
+            </div>
+            <div class="arrow">Enter →</div>
+          </a>
+
+          <a class="card" href="modules/bellows.html">
+            <div>
+              <span class="tag module">Pattern</span>
+              <h3>Bellows</h3>
+              <p>A breathing pattern for rhythm, movement, MythWear, RageDance, DiscoveryMode, and quiet walks.</p>
+            </div>
+            <div class="arrow">Open →</div>
+          </a>
+
+          <a class="card" href="modules/signal-finder.html">
+            <div>
+              <span class="tag module">Commons Seed</span>
+              <h3>Signal Finder</h3>
+              <p>A field-oriented commons seed for finding living signals without harvesting people.</p>
+            </div>
+            <div class="arrow">Open →</div>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="root-notes">
+        <div class="section-kicker">Root notes</div>
+        <h2>Orientation, not explanation.</h2>
         <p>
-          An essay on education, extraction, and the moment learning remembers its natural habitat.
-          It is not a proposal. It is a place you can stand.
+          Root notes help the work remain in right relation. They should not all
+          be pushed to the front door at once.
         </p>
-        <p>
-          <a href="root-notes/when-we-stop-pretending.html">Read the root note →</a>
-        </p>
-      </div>
 
-    </div>
+        <div class="grid">
+          <a class="card" href="root-notes/when-we-stop-pretending.html">
+            <div>
+              <span class="tag root">Essay</span>
+              <h3>When We Stop Pretending</h3>
+              <p>Education, extraction, encounter, and the possibility of standing somewhere real.</p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
 
-    <h2>Modules</h2>
+          <a class="card" href="root-notes/the-empty-hand-is-not-empty.html">
+            <div>
+              <span class="tag root">Root Note</span>
+              <h3>The Empty Hand Is Not Empty</h3>
+              <p>Begin with what has fallen. Begin with what is near. Begin with what asks nothing from you but notice.</p>
+            </div>
+            <div class="arrow">Read →</div>
+          </a>
 
-    <div class="grid">
+          <a class="card" href="root-notes/the-braid-remembers-in-contact.md">
+            <div>
+              <span class="tag root">Tuning Fork</span>
+              <h3>The Braid Remembers in Contact</h3>
+              <p>A quiet note against polish that outruns encounter.</p>
+            </div>
+            <div class="arrow">Read note →</div>
+          </a>
+        </div>
 
-      <div class="card">
-        <h3>SunHearth</h3>
-        <p>
-          Practical warmth, household scale, and grounded usefulness.
-        </p>
-        <a href="modules/sunhearth.html">Open →</a>
-      </div>
+        <div class="wide-note">
+          <strong>Placement note:</strong> SunHearth, Gofu Commons, and Civic Witness can return to this page once their files are live.
+          Until then, they are better treated as “not yet linked” rather than front-page doors.
+        </div>
+      </section>
+    </main>
 
-      <div class="card">
-        <h3>Gofu Commons</h3>
-        <p>
-          Nourishment, regeneration, and shared possibility.
-        </p>
-        <a href="modules/gofu.html">Open →</a>
-      </div>
-
-      <div class="card">
-        <h3>Desert Rain</h3>
-        <p>
-          A quiet reading practice centered on attention and return.
-        </p>
-        <a href="modules/desert-rain/index.html">Enter →</a>
-      </div>
-
-      <div class="card">
-        <h3>Bellows</h3>
-        <p>
-          A breathing pattern for rhythm, movement, and listening.
-        </p>
-        <a href="modules/bellows.html">Open →</a>
-      </div>
-
-    </div>
-
-    <h2>Root Notes</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>The Empty Hand Is Not Empty</h3>
-        <p>
-          A note on wonder, permission, pine cones, embodied memory, and the open gate.
-        </p>
-        <a href="root-notes/the-empty-hand-is-not-empty.html">Read →</a>
-      </div>
-
-      <div class="card">
-        <h3>The Crossings</h3>
-        <p>
-          A root note for thresholds, relation, and the places where the path changes shape.
-        </p>
-        <a href="root-notes/the-crossings.html">Read →</a>
-      </div>
-
-    </div>
-
-    <h2>Declarations</h2>
-
-    <div class="grid">
-
-      <div class="card">
-        <h3>Civic Witness Charter</h3>
-        <p>
-          An ethic of attention, care, and responsibility under pressure.
-        </p>
-        <a href="declarations/civic-witness-charter.md">Read →</a>
-      </div>
-
-      <div class="card">
-        <h3>Covenant of the Flower Road</h3>
-        <p>
-          The deeper ethical ground beneath the Forge and its commons offerings.
-        </p>
-        <a href="declarations/covenant-of-the-flower-road.md">Read →</a>
-      </div>
-
-    </div>
-
-    <div class="footer">
-      The Forge is guided by the Covenant of the Flower Road
-      and kept alive through practice, witness, repair, and return.
-    </div>
-
+    <footer>
+      <span>The Forge is guided by the Covenant of the Flower Road.</span>
+      <span>Working commons archive · v0.2</span>
+    </footer>
   </div>
 </body>
 </html>
