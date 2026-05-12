@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Story Seeds | The Forge</title>
+  <meta name="description" content="Story seeds from the Forge: small protected narrative vessels, threshold prompts, and unfinished stories held with care." />
+
+  <style>
+    :root {
+      --bg: #050a12;
+      --bg-card: rgba(12, 25, 40, 0.86);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #e8eef5;
+      --muted: #aebbc8;
+      --quiet: #7f8d9c;
+      --gold: #d8b66c;
+      --ember: #d78b68;
+      --green: #9fc7a4;
+      --radius: 22px;
+      --max: 980px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(215, 139, 104, 0.18), transparent 32rem),
+        radial-gradient(circle at bottom right, rgba(216, 182, 108, 0.12), transparent 34rem),
+        linear-gradient(180deg, #08111d 0%, var(--bg) 62%, #03070d 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 56px;
+    }
+
+    header {
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mark {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    .back {
+      color: var(--muted);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.92rem;
+    }
+
+    .hero {
+      padding: 64px 0 36px;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 8vw, 5.8rem);
+      line-height: 0.92;
+      margin: 0 0 22px;
+      letter-spacing: -0.065em;
+    }
+
+    .subtitle {
+      max-width: 740px;
+      color: var(--muted);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      margin: 0;
+    }
+
+    .note {
+      margin: 32px 0;
+      padding: 22px;
+      border: 1px dashed rgba(216, 182, 108, 0.38);
+      border-radius: var(--radius);
+      background: rgba(216, 182, 108, 0.055);
+      color: var(--muted);
+    }
+
+    .note strong {
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      min-height: 260px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      border-color: rgba(216, 182, 108, 0.55);
+    }
+
+    .placeholder {
+      border-style: dashed;
+      opacity: 0.92;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(215, 139, 104, 0.42);
+      color: var(--muted);
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+      line-height: 1.18;
+      letter-spacing: -0.025em;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .arrow {
+      margin-top: 22px;
+      color: var(--gold);
+      font-weight: 650;
+    }
+
+    .small {
+      margin-top: 16px;
+      color: var(--quiet);
+      font-size: 0.92rem;
+    }
+
+    footer {
+      margin-top: 42px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="mark">The Forge · Story Seeds</div>
+      <a class="back" href="../index.html">← Back to The Forge</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Story Seeds</h1>
+        <p class="subtitle">
+          Small narrative vessels held before they become lessons, modules, or finished stories.
+          A story seed may be a fragment, a threshold, a prompt, or a protected ember.
+        </p>
+      </section>
+
+      <div class="note">
+        <strong>Placement guardrail:</strong> Story seeds are not root notes and not modules.
+        They may later cross into DiscoveryMode, Seven Nights in the Monster Kitchen, Circles in Motion,
+        or Shadow Dancer work, but here they are allowed to remain story first.
+      </div>
+
+      <section class="grid" aria-label="Story seeds">
+        <a class="card" href="when-the-wolf-cries-boy.md">
+          <div>
+            <span class="tag">Story Seed</span>
+            <h2>When the Wolf Cries, Boy</h2>
+            <p>
+              A short forest story about a father, a son, a young wolf, a lump in the throat,
+              and the moment of recognition that arrives without explanation.
+            </p>
+            <p class="small">
+              Status: placed as a story seed. Keep the ambiguity.
+            </p>
+          </div>
+          <div class="arrow">Read the story →</div>
+        </a>
+
+        <article class="card placeholder">
+          <div>
+            <span class="tag">Protected Prompt</span>
+            <h2>The Wolf Who Cried, Boy</h2>
+            <p>
+              Placeholder for the DiscoveryMode threshold framing: misrecognition, inherited silence,
+              the almost-cry, and the valid response of “nothing yet.”
+            </p>
+            <p class="small">
+              Status: protected. Do not over-explain the wolf. Do not force sharing.
+            </p>
+          </div>
+          <div class="arrow">Prompt page not yet opened</div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      Story seeds belong near the Forge, but they should not be forced to explain themselves too early.
+    </footer>
+  </div>
+</body>
+</html>
