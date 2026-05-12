@@ -7,4 +7,6 @@
 > This is not a summary of the Forge, a DiscoveryMode pitch, or an education reform proposal.  
 > It is a place to stand before entering the work.
 
-[Uploading when-we-stop-pretending.pdf…]()
+---
+
+[Read the PDF](https://github.com/user-attachments/files/27647956/when-we-stop-pretending.pdf)
