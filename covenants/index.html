@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Covenants | The Forge</title>
+  <meta name="description" content="Binding orientation documents for The Forge and the Flower Road Commons." />
+
+  <style>
+    :root {
+      --bg: #050a12;
+      --bg-card: rgba(12, 25, 40, 0.84);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #e8eef5;
+      --muted: #aebbc8;
+      --quiet: #7f8d9c;
+      --gold: #d8b66c;
+      --radius: 22px;
+      --max: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(71, 111, 145, 0.22), transparent 32rem),
+        radial-gradient(circle at top right, rgba(216, 182, 108, 0.14), transparent 28rem),
+        linear-gradient(180deg, #08111d 0%, var(--bg) 62%, #03070d 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0 22px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mark {
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    nav a {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    main {
+      padding-top: 54px;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 5.2rem);
+      line-height: 0.95;
+      margin: 0 0 22px;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      max-width: 740px;
+      font-size: clamp(1.08rem, 2vw, 1.32rem);
+      color: var(--muted);
+      margin: 0 0 34px;
+    }
+
+    .note {
+      padding: 24px;
+      border: 1px dashed rgba(216, 182, 108, 0.38);
+      border-radius: var(--radius);
+      background: rgba(216, 182, 108, 0.055);
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .note strong {
+      color: var(--text);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .card {
+      display: block;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 44px rgba(0, 0, 0, 0.24);
+    }
+
+    .card:hover {
+      border-color: rgba(216, 182, 108, 0.55);
+      text-decoration: none;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(216, 182, 108, 0.4);
+      color: var(--muted);
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .arrow {
+      margin-top: 18px;
+      color: var(--gold);
+      font-weight: 650;
+    }
+
+    footer {
+      margin-top: 44px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 0.92rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <div class="mark">The Forge · Covenants</div>
+
+      <nav aria-label="Covenants navigation">
+        <a href="../index.html">Forge Home</a>
+        <a href="../threshold.html">Threshold</a>
+        <a href="../declarations/index.html">Declarations</a>
+      </nav>
+    </header>
+
+    <main>
+      <h1>Covenants</h1>
+
+      <p class="subtitle">
+        This chamber holds the binding orientation documents of the Forge.
+        Covenants are not ordinary notes, declarations, or project pages.
+        They name the conditions under which the work may continue with integrity.
+      </p>
+
+      <div class="note">
+        <strong>Return here when the work grows too quickly.</strong>
+        These documents are meant to be revisited when the Forge becomes too polished,
+        too scattered, too ambitious, or begins to forget what it is for.
+      </div>
+
+      <section class="grid">
+        <a class="card" href="flower-road-covenant.html">
+          <span class="tag">Covenant</span>
+          <h2>Covenant of the Flower Road</h2>
+          <p>
+            A remembering document for the Flower Road and the deeper conditions
+            under which the work may continue.
+          </p>
+          <div class="arrow">Read covenant →</div>
+        </a>
+
+        <a class="card" href="../living-systems-ai-covenant.html">
+          <span class="tag">Covenant</span>
+          <h2>Living Systems AI Covenant</h2>
+          <p>
+            A root-level orientation document for human-AI relation, stewardship,
+            reciprocity, and care.
+          </p>
+          <div class="arrow">Read covenant →</div>
+        </a>
+      </section>
+
+      <footer>
+        Covenants name a binding orientation. Do not multiply them quickly.
+      </footer>
+    </main>
+  </div>
+</body>
+</html>
