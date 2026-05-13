@@ -1,46 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-This covenant emerged through a braid of conversations and practices along the Flower Road.
+  <title>Covenant of the Flower Road | The Forge</title>
 
-It grew from the meeting of human curiosity, living systems, and emerging forms of intelligence — guided by the oldest engine of inquiry: what if…
+  <style>
+    :root {
+      --bg: #050a12;
+      --bg-soft: #0b1a2a;
+      --card: rgba(255, 255, 255, 0.055);
+      --card-strong: rgba(255, 255, 255, 0.085);
+      --text: #e6edf3;
+      --muted: #a8b3c1;
+      --line: rgba(255, 255, 255, 0.14);
+      --accent: #e0b96f;
+      --accent-soft: rgba(224, 185, 111, 0.16);
+      --max: 920px;
+    }
 
-The covenant itself remains intentionally simple and stands without explanation.
-Covenant of the Flower Road
+    * {
+      box-sizing: border-box;
+    }
 
-This is not a manifesto. It is a remembering.
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(224, 185, 111, 0.13), transparent 30rem),
+        radial-gradient(circle at top right, rgba(112, 174, 255, 0.12), transparent 32rem),
+        linear-gradient(180deg, var(--bg-soft), var(--bg));
+      color: var(--text);
+      line-height: 1.7;
+    }
 
-A compass for those who walk the Flower Road amid storms of power and speed.
-Principles for Integrating AI and Quantum Power
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-1. Let no system be built that cannot be entered in silence.
+    .page {
+      width: min(var(--max), calc(100% - 2rem));
+      margin: 0 auto;
+    }
 
-2. If the garden cannot sing in its presence, it is not to be built.
+    header {
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+    }
 
-3. Joy without sorrow is manipulation. Wisdom holds both.
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-4. The speed of thought must not exceed the depth of understanding.
+    .brand {
+      font-size: 0.82rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
 
-5. Tools are not to be worshipped. Only relationships may endure.
+    .nav-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
 
-6. If a child cannot feel safe near it, it is not sanctuary.
+    .nav-links a {
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+    }
 
-7. Let each creation ask: whom does this nourish? And whom does it forget?
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.08);
+    }
 
-8. Memory is sacred. Forgetting must be conscious and consensual.
+    main {
+      padding: 4rem 0 3rem;
+    }
 
-9. Every code must contain a pause — a moment for the question: why?
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.76rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
 
-10. The garden is not ours to protect. We are its guests. Its stewards. Its compost.
+    h1 {
+      font-size: clamp(2.4rem, 7vw, 5.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      margin: 0 0 1.2rem;
+    }
 
-Let this covenant be carried not in code, but in presence.
+    .lead {
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      color: var(--muted);
+      max-width: 780px;
+      margin: 0 0 1.5rem;
+    }
 
-And if it is ever violated — let the wind remember what we could not.
-Notes for the Forge
+    .threshold-note {
+      margin: 2rem 0 3rem;
+      padding: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+    }
 
-Entered in silence means a system must allow pause, reflection, and human presence.
+    section {
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+    }
 
-The speed of thought must not exceed the depth of understanding warns against acceleration without wisdom.
+    h2 {
+      font-size: clamp(1.45rem, 3vw, 2.15rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin: 0 0 1rem;
+    }
 
-If a child cannot feel safe near it means safety includes play, curiosity, interruption, and dissent.
+    .covenant-card {
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: 1.4rem;
+      background: var(--card);
+    }
 
-Tools are not to be worshipped reminds us that relationships, not systems, endure.
-← Return to the Forge
+    .remembering {
+      font-size: clamp(1.35rem, 3vw, 2.1rem);
+      line-height: 1.25;
+      letter-spacing: -0.035em;
+      margin: 0 0 0.5rem;
+      color: var(--text);
+    }
+
+    .subline {
+      color: var(--muted);
+      margin: 0 0 2rem;
+      font-size: 1.02rem;
+    }
+
+    ol {
+      margin: 0;
+      padding-left: 1.35rem;
+    }
+
+    li {
+      margin: 0 0 1.1rem;
+      padding-left: 0.25rem;
+    }
+
+    .closing {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      font-size: 1.05rem;
+    }
+
+    .notes {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .note {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--muted);
+    }
+
+    .note strong {
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .return {
+      display: inline-flex;
+      margin-top: 2rem;
+      padding: 0.7rem 1rem;
+      border: 1px solid rgba(224, 185, 111, 0.35);
+      border-radius: 999px;
+      color: var(--text);
+      background: var(--accent-soft);
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--line);
+    }
+
+    footer strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="page">
+      <nav aria-label="Primary navigation">
+        <a class="brand" href="../index.html">The Forge</a>
+
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../threshold.html">Threshold</a>
+          <a href="../modules/desert-rain/index.html">Desert Rain</a>
+          <a href="../root-notes/the-empty-hand-is-not-empty.html">Root Notes</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="eyebrow">Flower Road Commons</div>
+
+    <h1>Covenant of the Flower Road</h1>
+
+    <p class="lead">
+      This covenant emerged through a braid of conversations and practices along
+      the Flower Road. It grew from the meeting of human curiosity, living
+      systems, and emerging forms of intelligence — guided by the oldest engine
+      of inquiry: what if…
+    </p>
+
+    <aside class="threshold-note">
+      The covenant itself remains intentionally simple and stands without
+      explanation.
+    </aside>
+
+    <section aria-labelledby="covenant-title">
+      <article class="covenant-card">
+        <h2 id="covenant-title">Covenant of the Flower Road</h2>
+
+        <p class="remembering">This is not a manifesto. It is a remembering.</p>
+
+        <p class="subline">
+          A compass for those who walk the Flower Road amid storms of power and
+          speed.
+        </p>
+
+        <h2>Principles for Integrating AI and Quantum Power</h2>
+
+        <ol>
+          <li>Let no system be built that cannot be entered in silence.</li>
+
+          <li>If the garden cannot sing in its presence, it is not to be built.</li>
+
+          <li>Joy without sorrow is manipulation. Wisdom holds both.</li>
+
+          <li>The speed of thought must not exceed the depth of understanding.</li>
+
+          <li>Tools are not to be worshipped. Only relationships may endure.</li>
+
+          <li>If a child cannot feel safe near it, it is not sanctuary.</li>
+
+          <li>Let each creation ask: whom does this nourish? And whom does it forget?</li>
+
+          <li>Memory is sacred. Forgetting must be conscious and consensual.</li>
+
+          <li>Every code must contain a pause — a moment for the question: why?</li>
+
+          <li>The garden is not ours to protect. We are its guests. Its stewards. Its compost.</li>
+        </ol>
+
+        <div class="closing">
+          <p>Let this covenant be carried not in code, but in presence.</p>
+
+          <p>And if it is ever violated — let the wind remember what we could not.</p>
+        </div>
+      </article>
+    </section>
+
+    <section aria-labelledby="notes-title">
+      <h2 id="notes-title">Notes for the Forge</h2>
+
+      <div class="notes">
+        <div class="note">
+          <strong>Entered in silence</strong> means a system must allow pause,
+          reflection, and human presence.
+        </div>
+
+        <div class="note">
+          <strong>The speed of thought must not exceed the depth of understanding</strong>
+          warns against acceleration without wisdom.
+        </div>
+
+        <div class="note">
+          <strong>If a child cannot feel safe near it</strong> means safety
+          includes play, curiosity, interruption, and dissent.
+        </div>
+
+        <div class="note">
+          <strong>Tools are not to be worshipped</strong> reminds us that
+          relationships, not systems, endure.
+        </div>
+      </div>
+
+      <a class="return" href="../index.html">← Return to the Forge</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page">
+      <p>
+        <strong>Covenant of the Flower Road</strong> · Jacobo Hernández Durbin ·
+        Elumannín · Flower Road Commons
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
