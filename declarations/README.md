@@ -14,4 +14,12 @@ They sit between root notes and covenant:
 
 ## Current
 
-- declaration-of-entangled-agency.md
+- [Declaration of Entangled Agency](declaration-of-entangled-agency.md)
+
+## Related Covenant Texts
+
+- [Covenant of the Flower Road](flower-road-covenant.md)
+
+For binding orientation documents, see:
+
+- [Covenants](../covenants/)
