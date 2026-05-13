@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>The Forge | Flower Road Commons</title>
-  <meta name="description" content="The Forge is a living archive within the Flower Road Commons: tools, practices, story seeds, root notes, and ethical ground layers still becoming." />
+  <meta name="description" content="The Forge is a living archive within the Flower Road Commons: tools, practices, story seeds, root notes, covenants, and ethical ground layers still becoming." />
 
   <style>
     :root {
@@ -253,6 +253,10 @@
       border-color: rgba(159, 199, 164, 0.42);
     }
 
+    .tag.covenant {
+      border-color: rgba(216, 182, 108, 0.52);
+    }
+
     .arrow {
       margin-top: 22px;
       color: var(--gold);
@@ -282,6 +286,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
       gap: 12px;
+    }
+
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
     @media (max-width: 860px) {
@@ -321,6 +331,8 @@
       <div class="mark">Flower Road Commons</div>
 
       <nav aria-label="Forge navigation">
+        <a href="README.md">README</a>
+        <a href="covenants/README.md">Covenants</a>
         <a href="threshold.html">Threshold</a>
         <a href="modules/desert-rain/index.html">Desert Rain</a>
         <a href="story-seeds/index.html">Story Seeds</a>
@@ -335,7 +347,7 @@
 
           <p class="subtitle">
             A living archive within the commons. The Forge holds tools, practices,
-            story seeds, root notes, and ethical ground layers that are still becoming.
+            story seeds, root notes, covenants, and ethical ground layers that are still becoming.
           </p>
 
           <p class="hero-line">
@@ -348,8 +360,8 @@
           <div class="small-label">Current orientation</div>
           <p>
             The Forge is being cleaned into clearer doors: threshold, modules,
-            story seeds, and root notes. Not everything needs to appear at the
-            front gate. Some things are still ripening.
+            story seeds, root notes, and covenants. Not everything needs to appear
+            at the front gate. Some things are still ripening.
           </p>
         </aside>
       </section>
@@ -405,6 +417,61 @@
             </div>
             <div class="arrow">Read →</div>
           </a>
+        </div>
+      </section>
+
+      <section class="section" id="grounding-documents">
+        <div class="section-kicker">Grounding Documents</div>
+        <h2>What holds the Forge in right relation.</h2>
+        <p>
+          These documents are not front-page decoration. They are return points:
+          places to revisit when the work grows quickly, becomes too polished,
+          or begins to forget what it is for.
+        </p>
+
+        <div class="grid">
+          <a class="card" href="README.md">
+            <div>
+              <span class="tag covenant">README</span>
+              <h3>Forge README</h3>
+              <p>
+                The plain orientation page for the Forge: what it is, how to enter,
+                and how its current doors are organized.
+              </p>
+            </div>
+            <div class="arrow">Open README →</div>
+          </a>
+
+          <a class="card" href="covenants/README.md">
+            <div>
+              <span class="tag covenant">Covenants</span>
+              <h3>Covenants Chamber</h3>
+              <p>
+                The gathering place for binding orientation documents that guide
+                more than one project, offering, or tool.
+              </p>
+            </div>
+            <div class="arrow">Enter covenants →</div>
+          </a>
+
+          <a class="card" href="declarations/flower-road-covenant.md">
+            <div>
+              <span class="tag covenant">Covenant</span>
+              <h3>Covenant of the Flower Road</h3>
+              <p>
+                A remembering document for the Flower Road and the deeper conditions
+                under which the work may continue.
+              </p>
+            </div>
+            <div class="arrow">Read covenant →</div>
+          </a>
+        </div>
+
+        <div class="wide-note">
+          <strong>Related covenant:</strong>
+          The <a href="living-systems-ai-covenant.html">Living Systems AI Covenant</a>
+          remains available as a root-level orientation document for human-AI relation,
+          stewardship, and care.
         </div>
       </section>
 
@@ -604,8 +671,11 @@
     </main>
 
     <footer>
-      <span>The Forge is guided by the Covenant of the Flower Road.</span>
-      <span>Working commons archive · v0.3</span>
+      <span>
+        The Forge is guided by the
+        <a href="declarations/flower-road-covenant.md">Covenant of the Flower Road</a>.
+      </span>
+      <span>Working commons archive · v0.4</span>
     </footer>
   </div>
 </body>
