@@ -92,4 +92,3 @@ Some offerings may carry additional commons-aligned stewardship notes. Follow th
 ## Ecosystem
 
 See [`/ECOSYSTEM.md`](ECOSYSTEM.md) for a working map of the Flower Road Commons.
-```
