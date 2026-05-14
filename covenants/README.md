@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/27767056/README.md)
 # Covenants
 
 This chamber holds the binding orientation documents of the Forge.
@@ -8,7 +9,7 @@ They are meant to be returned to when the work grows too quickly, becomes too po
 
 ## Current Covenants
 
-- [Covenant of the Flower Road](../declarations/flower-road-covenant.md)
+- [Covenant of the Flower Road](flower-road-covenant.html)
 - [Living Systems AI Covenant](../living-systems-ai-covenant.html)
 
 ## Relationship to Declarations
