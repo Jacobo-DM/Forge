@@ -1,3 +1,4 @@
+[README.md](https://github.com/user-attachments/files/27767081/README.md)
 # Declarations
 
 This space holds statements of orientation, position, and refusal.
@@ -18,8 +19,8 @@ They sit between root notes and covenant:
 
 ## Related Covenant Texts
 
-- [Covenant of the Flower Road](flower-road-covenant.md)
+The public covenant doorway lives here:
 
-For binding orientation documents, see:
+- [Covenant of the Flower Road](../covenants/flower-road-covenant.html)
 
-- [Covenants](../covenants/)
+The local Markdown copy in this folder is an archive/reference copy, not the main public doorway.
