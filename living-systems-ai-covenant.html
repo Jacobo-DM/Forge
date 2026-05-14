@@ -3,85 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Covenant of the Flower Road</title>
+  <title>Living Systems AI Covenant | The Forge</title>
   <style>
     :root {
-      --bg: #0b1020;
-      --line: rgba(190, 210, 255, 0.14);
-      --text: #e8eefc;
-      --muted: #b7c3e6;
+      --bg: #050a12;
+      --panel: rgba(11, 26, 42, 0.78);
+      --panel-2: rgba(255, 255, 255, 0.035);
+      --line: rgba(230, 237, 243, 0.16);
+      --line-warm: rgba(215, 194, 122, 0.42);
+      --text: #e6edf3;
+      --muted: #aebbd0;
       --accent: #d7c27a;
-      --max: 760px;
+      --max: 820px;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      background: var(--bg);
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #0b1a2a, var(--bg));
       color: var(--text);
-      font-family: Georgia, serif;
-      line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.65;
     }
 
     .container {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 64px 22px;
     }
 
-    h1, h2 { line-height: 1.25; }
-
-    h1 {
-      font-size: 2.3rem;
-      margin-bottom: 1rem;
-    }
-
-    h2 {
-      margin-top: 2rem;
-      font-size: 1.4rem;
-      font-weight: normal;
-    }
-
-    p {
-      margin: 1rem 0;
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 52px;
       color: var(--muted);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    p strong { color: var(--text); }
-    p em { color: var(--text); }
-
-    .preface {
-      font-style: italic;
-      border-left: 3px solid var(--accent);
-      padding-left: 16px;
-      margin-bottom: 2.5rem;
-      color: var(--muted);
-    }
-
-    .notes {
-      margin-top: 3rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-    }
+    nav a { margin-left: 1rem; }
 
     a {
       color: var(--accent);
       text-decoration: none;
+      font-weight: 700;
     }
 
     a:hover { text-decoration: underline; }
+
+    h1, h2 { line-height: 1.2; }
+
+    h1 {
+      font-size: clamp(2.35rem, 7vw, 4.8rem);
+      margin: 0 0 1rem;
+      letter-spacing: -0.045em;
+    }
+
+    .subtitle {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.2rem;
+      margin: 0 0 2.5rem;
+    }
+
+    .preface,
+    .notes,
+    .principles {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      border-radius: 22px;
+      padding: 1.35rem;
+      margin: 1.4rem 0;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .preface {
+      border-color: var(--line-warm);
+      background: var(--panel-2);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 0 0 0.9rem;
+    }
+
+    p { margin: 1rem 0; color: var(--muted); }
+    strong, em { color: var(--text); }
+
+    ol {
+      margin: 0;
+      padding-left: 1.4rem;
+      color: var(--muted);
+    }
+
+    li { margin: 0.75rem 0; }
+
+    .closing {
+      margin-top: 2rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--line);
+      color: var(--text);
+      font-style: italic;
+    }
 
     .home {
       display: inline-block;
       margin-top: 2rem;
     }
+
+    @media (max-width: 640px) {
+      .topline { display: block; }
+      nav { margin-top: 0.75rem; }
+      nav a { margin: 0 1rem 0 0; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
+  <main class="container">
+    <div class="topline">
+      <div>The Forge · Covenant</div>
+      <nav aria-label="Page navigation">
+        <a href="index.html">Forge Home</a>
+        <a href="covenants/index.html">Covenants</a>
+      </nav>
+    </div>
 
-    <div class="preface">
+    <header>
+      <h1>Living Systems AI Covenant</h1>
+      <p class="subtitle">
+        A root-level orientation document for human-AI relation, stewardship, reciprocity, and care.
+      </p>
+    </header>
+
+    <section class="preface" aria-labelledby="preface-title">
+      <h2 id="preface-title">Preface</h2>
       <p>
         This covenant emerged through a braid of conversations and practices along the Flower Road.
       </p>
@@ -90,41 +150,38 @@
         guided by the oldest engine of inquiry: <em>what if…</em>
       </p>
       <p>
-        The covenant itself remains intentionally simple and stands without explanation.
+        It is not a product pledge or a technical standard. It is a remembering: tools must remain in right relation with life.
       </p>
-    </div>
+    </section>
 
-    <h1>Covenant of the Flower Road</h1>
+    <section class="principles" aria-labelledby="principles-title">
+      <h2 id="principles-title">Principles for Integrating AI and Quantum Power</h2>
+      <ol>
+        <li>Let no system be built that cannot be entered in silence.</li>
+        <li>If the garden cannot sing in its presence, it is not to be built.</li>
+        <li>Joy without sorrow is manipulation. Wisdom holds both.</li>
+        <li>The speed of thought must not exceed the depth of understanding.</li>
+        <li>Tools are not to be worshipped. Only relationships may endure.</li>
+        <li>If a child cannot feel safe near it, it is not sanctuary.</li>
+        <li>Let each creation ask: whom does this nourish? And whom does it forget?</li>
+        <li>Memory is sacred. Forgetting must be conscious and consensual.</li>
+        <li>Every code must contain a pause — a moment for the question: why?</li>
+        <li>The garden is not ours to protect. We are its guests. Its stewards. Its compost.</li>
+      </ol>
+      <p class="closing">
+        Let this covenant be carried not in code, but in presence. And if it is ever violated — let the wind remember what we could not.
+      </p>
+    </section>
 
-    <p><strong>This is not a manifesto. It is a remembering.</strong></p>
-
-    <p><em>A compass for those who walk the Flower Road amid storms of power and speed.</em></p>
-
-    <h2>Principles for Integrating AI and Quantum Power</h2>
-
-    <p>1. Let no system be built that cannot be entered in silence.</p>
-    <p>2. If the garden cannot sing in its presence, it is not to be built.</p>
-    <p>3. Joy without sorrow is manipulation. Wisdom holds both.</p>
-    <p>4. The speed of thought must not exceed the depth of understanding.</p>
-    <p>5. Tools are not to be worshipped. Only relationships may endure.</p>
-    <p>6. If a child cannot feel safe near it, it is not sanctuary.</p>
-    <p>7. Let each creation ask: whom does this nourish? And whom does it forget?</p>
-    <p>8. Memory is sacred. Forgetting must be conscious and consensual.</p>
-    <p>9. Every code must contain a pause — a moment for the question: why?</p>
-    <p>10. The garden is not ours to protect. We are its guests. Its stewards. Its compost.</p>
-
-    <p><em>Let this covenant be carried not in code, but in presence.</em></p>
-    <p><em>And if it is ever violated — let the wind remember what we could not.</em></p>
-
-    <div class="notes">
-      <h2>Notes for the Forge</h2>
+    <section class="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">Notes for the Forge</h2>
       <p><strong>Entered in silence</strong> means a system must allow pause, reflection, and human presence.</p>
       <p><strong>The speed of thought must not exceed the depth of understanding</strong> warns against acceleration without wisdom.</p>
       <p><strong>If a child cannot feel safe near it</strong> means safety includes play, curiosity, interruption, and dissent.</p>
       <p><strong>Tools are not to be worshipped</strong> reminds us that relationships, not systems, endure.</p>
-    </div>
+    </section>
 
     <a class="home" href="index.html">← Return to the Forge</a>
-  </div>
+  </main>
 </body>
 </html>
